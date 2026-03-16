@@ -1,130 +1,47 @@
+aid: rabbitmq
 name: RabbitMQ
 description: RabbitMQ is a widely deployed open source message broker. It supports multiple messaging protocols and can be deployed in distributed and federated configurations to meet high-scale, high-availability requirements.
+type: Index
 image: https://www.rabbitmq.com/img/rabbitmq-logo.svg
-url: https://www.rabbitmq.com/
-created: '2024'
-modified: '2024'
-specificationVersion: '0.18'
+url: https://raw.githubusercontent.com/api-evangelist/rabbitmq/refs/heads/main/apis.yml
 tags:
-- message broker
-- messaging
-- AMQP
-- queue
-- distributed systems
-- event streaming
-apis:
-- name: RabbitMQ Management HTTP API
-  description: HTTP-based API for management and monitoring of RabbitMQ nodes and clusters. Allows you to manage exchanges, queues, bindings, users, virtual hosts, permissions, and more.
-  image: https://www.rabbitmq.com/img/rabbitmq-logo.svg
-  humanURL: https://www.rabbitmq.com/management.html
-  baseURL: http://localhost:15672/api
-  properties:
-  - type: X-documentation
-    url: https://rawcdn.githack.com/rabbitmq/rabbitmq-server/v3.12.0/deps/rabbitmq_management/priv/www/api/index.html
-  - type: X-openapi
-    url: https://raw.githubusercontent.com/rabbitmq/rabbitmq-server/main/deps/rabbitmq_management/priv/www/api/rabbitmq-management-openapi.json
-  - type: X-authentication
-    url: https://www.rabbitmq.com/management.html#permissions
-  - type: X-rate-limits
-    url: https://www.rabbitmq.com/management.html#configuration
-  tags:
-  - management
-  - monitoring
-  - REST API
-  - HTTP
-- name: RabbitMQ AMQP 0-9-1 Protocol
-  description: The core AMQP 0-9-1 protocol implementation for message publishing and consumption. This is the primary protocol for application integration with RabbitMQ.
-  image: https://www.rabbitmq.com/img/rabbitmq-logo.svg
-  humanURL: https://www.rabbitmq.com/tutorials/amqp-concepts.html
-  baseURL: amqp://localhost:5672
-  properties:
-  - type: X-documentation
-    url: https://www.rabbitmq.com/protocol.html
-  - type: X-specification
-    url: https://www.rabbitmq.com/resources/specs/amqp0-9-1.pdf
-  - type: X-clients
-    url: https://www.rabbitmq.com/devtools.html
-  - type: X-tutorials
-    url: https://www.rabbitmq.com/getstarted.html
-  tags:
-  - AMQP
-  - protocol
+  - message broker
   - messaging
-  - publish-subscribe
-- name: RabbitMQ MQTT Protocol
-  description: MQTT protocol adapter allowing IoT and mobile clients to connect to RabbitMQ using the lightweight MQTT protocol.
-  image: https://www.rabbitmq.com/img/rabbitmq-logo.svg
-  humanURL: https://www.rabbitmq.com/mqtt.html
-  baseURL: mqtt://localhost:1883
-  properties:
-  - type: X-documentation
-    url: https://www.rabbitmq.com/mqtt.html
-  - type: X-plugin
-    url: https://github.com/rabbitmq/rabbitmq-mqtt
-  - type: X-configuration
-    url: https://www.rabbitmq.com/mqtt.html#config
-  tags:
-  - MQTT
-  - IoT
-  - protocol
-  - mobile
-- name: RabbitMQ STOMP Protocol
-  description: STOMP protocol adapter providing a simple text-based messaging protocol for connecting to RabbitMQ from various platforms.
-  image: https://www.rabbitmq.com/img/rabbitmq-logo.svg
-  humanURL: https://www.rabbitmq.com/stomp.html
-  baseURL: stomp://localhost:61613
-  properties:
-  - type: X-documentation
-    url: https://www.rabbitmq.com/stomp.html
-  - type: X-plugin
-    url: https://github.com/rabbitmq/rabbitmq-stomp
-  - type: X-specification
-    url: https://stomp.github.io/stomp-specification-1.2.html
-  tags:
-  - STOMP
-  - protocol
-  - text-based
-- name: RabbitMQ Stream Protocol
-  description: High-throughput, low-latency streaming protocol for persistent, replicated streams of messages.
-  image: https://www.rabbitmq.com/img/rabbitmq-logo.svg
-  humanURL: https://www.rabbitmq.com/streams.html
-  baseURL: rabbitmq-stream://localhost:5552
-  properties:
-  - type: X-documentation
-    url: https://www.rabbitmq.com/streams.html
-  - type: X-specification
-    url: https://github.com/rabbitmq/rabbitmq-server/blob/main/deps/rabbitmq_stream/docs/PROTOCOL.adoc
-  - type: X-clients
-    url: https://www.rabbitmq.com/stream.html#clients
-  tags:
-  - streaming
-  - high-throughput
-  - protocol
-maintainers:
-- name: RabbitMQ Team
-  email: info@rabbitmq.com
-  url: https://www.rabbitmq.com/contact.html
+  - AMQP
+  - queue
+  - distributed systems
+  - event streaming
+created: '2024-01-01'
+modified: '2026-03-16'
+specificationVersion: '0.19'
+apis:
+  - aid: rabbitmq:rabbitmq-management-http-api
+    name: RabbitMQ Management HTTP API
+    description: HTTP-based API for management and monitoring of RabbitMQ nodes and clusters. Allows you to manage exchanges, queues, bindings, users, virtual hosts, permissions, and more.
+    humanURL: https://www.rabbitmq.com/management.html
+    tags:
+      - management
+      - monitoring
+      - REST API
+      - HTTP
+    properties:
+      - type: Documentation
+        url: https://rawcdn.githack.com/rabbitmq/rabbitmq-server/v3.12.0/deps/rabbitmq_management/priv/www/api/index.html
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/rabbitmq/rabbitmq-server/main/deps/rabbitmq_management/priv/www/api/rabbitmq-management-openapi.json
+      - type: Authentication
+        url: https://www.rabbitmq.com/management.html#permissions
 common:
-- type: X-github
-  url: https://github.com/rabbitmq
-- type: X-community
-  url: https://www.rabbitmq.com/community.html
-- type: X-support
-  url: https://www.rabbitmq.com/contact.html
-- type: X-blog
-  url: https://www.rabbitmq.com/blog/
-- type: X-downloads
-  url: https://www.rabbitmq.com/download.html
-- type: X-docker
-  url: https://hub.docker.com/_/rabbitmq
-- type: X-status
-  url: https://status.rabbitmq.com/
-- type: X-slack
-  url: https://rabbitmq-slack.herokuapp.com/
-- type: X-twitter
-  url: https://twitter.com/rabbitmq
-- type: X-license
-  url: https://www.rabbitmq.com/mpl.html
-include:
-- name: RabbitMQ Plugins
-  url: https://www.rabbitmq.com/plugins.html
+  - type: GitHubOrganization
+    url: https://github.com/rabbitmq
+  - type: Community
+    url: https://www.rabbitmq.com/community.html
+  - type: Support
+    url: https://www.rabbitmq.com/contact.html
+  - type: Blog
+    url: https://www.rabbitmq.com/blog/
+  - type: Website
+    url: https://www.rabbitmq.com/
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
