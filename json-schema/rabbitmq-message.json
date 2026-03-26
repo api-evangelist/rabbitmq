@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/rabbitmq/rabbitmq-message.json",
+  "title": "RabbitMQ Message",
+  "description": "Schema for a RabbitMQ AMQP message including properties and payload.",
+  "type": "object",
+  "properties": {
+    "payload": {
+      "description": "The message body content"
+    },
+    "payload_bytes": {
+      "type": "integer",
+      "description": "Size of the payload in bytes"
+    },
+    "exchange": {
+      "type": "string",
+      "description": "The exchange the message was published to"
+    },
+    "routing_key": {
+      "type": "string",
+      "description": "The routing key used for message routing"
+    },
+    "redelivered": {
+      "type": "boolean",
+      "description": "Whether the message has been redelivered"
+    },
+    "properties": {
+      "type": "object",
+      "description": "AMQP message properties",
+      "properties": {
+        "content_type": {
+          "type": "string",
+          "description": "MIME type of the message body"
+        },
+        "content_encoding": {
+          "type": "string",
+          "description": "Encoding of the message body"
+        },
+        "delivery_mode": {
+          "type": "integer",
+          "enum": [1, 2],
+          "description": "1=non-persistent, 2=persistent"
+        },
+        "priority": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255,
+          "description": "Message priority"
+        },
+        "correlation_id": {
+          "type": "string",
+          "description": "Correlation identifier for RPC patterns"
+        },
+        "reply_to": {
+          "type": "string",
+          "description": "Queue name for reply messages"
+        },
+        "expiration": {
+          "type": "string",
+          "description": "Per-message TTL in milliseconds"
+        },
+        "message_id": {
+          "type": "string",
+          "description": "Application-provided message identifier"
+        },
+        "timestamp": {
+          "type": "integer",
+          "description": "Unix timestamp when message was created"
+        },
+        "type": {
+          "type": "string",
+          "description": "Application-specific message type"
+        },
+        "user_id": {
+          "type": "string",
+          "description": "User who published the message"
+        },
+        "app_id": {
+          "type": "string",
+          "description": "Application that published the message"
+        },
+        "headers": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Custom message headers"
+        }
+      }
+    }
+  },
+  "required": ["payload"]
+}

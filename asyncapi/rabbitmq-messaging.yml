@@ -1,0 +1,121 @@
+asyncapi: 2.6.0
+info:
+  title: RabbitMQ AMQP Messaging API
+  version: 3.13.0
+  description: >-
+    RabbitMQ messaging via AMQP 0-9-1 protocol. Producers publish messages to
+    exchanges which route them to queues based on bindings and routing keys.
+    Consumers subscribe to queues to receive messages.
+  contact:
+    name: RabbitMQ
+    url: https://www.rabbitmq.com/
+  license:
+    name: MPL 2.0
+    url: https://www.mozilla.org/en-US/MPL/2.0/
+servers:
+  default:
+    url: localhost:5672
+    protocol: amqp
+    protocolVersion: 0.9.1
+    description: Default RabbitMQ AMQP endpoint
+defaultContentType: application/json
+channels:
+  '{exchange}/{routing_key}':
+    description: >-
+      Messages are published to an exchange with a routing key. The exchange
+      routes messages to bound queues based on exchange type and binding rules.
+    parameters:
+      exchange:
+        description: The exchange name
+        schema:
+          type: string
+      routing_key:
+        description: The routing key for message routing
+        schema:
+          type: string
+    publish:
+      operationId: publishMessage
+      summary: Publish a message to an exchange
+      description: >-
+        Publish a message to the specified exchange with a routing key.
+        The exchange will route the message to matching queues based on
+        the exchange type (direct, fanout, topic, headers).
+      message:
+        $ref: '#/components/messages/AMQPMessage'
+      bindings:
+        amqp:
+          expiration: 60000
+          cc:
+            - additional.routing.key
+          priority: 10
+          deliveryMode: 2
+          mandatory: false
+          timestamp: true
+  '{queue}':
+    description: >-
+      Consumers subscribe to queues to receive messages. Queues can be durable,
+      exclusive, or auto-delete. Messages are distributed to consumers in
+      round-robin fashion.
+    parameters:
+      queue:
+        description: The queue name
+        schema:
+          type: string
+    subscribe:
+      operationId: consumeMessage
+      summary: Consume messages from a queue
+      description: >-
+        Subscribe to a queue to receive messages. Supports manual and
+        automatic acknowledgment modes.
+      message:
+        $ref: '#/components/messages/AMQPMessage'
+      bindings:
+        amqp:
+          ack: true
+components:
+  messages:
+    AMQPMessage:
+      name: AMQPMessage
+      title: AMQP Message
+      summary: A message in RabbitMQ following the AMQP 0-9-1 protocol
+      contentType: application/json
+      headers:
+        type: object
+        properties:
+          content_type:
+            type: string
+          content_encoding:
+            type: string
+          delivery_mode:
+            type: integer
+            enum: [1, 2]
+            description: 1 for non-persistent, 2 for persistent
+          priority:
+            type: integer
+            minimum: 0
+            maximum: 9
+          correlation_id:
+            type: string
+          reply_to:
+            type: string
+          expiration:
+            type: string
+          message_id:
+            type: string
+          timestamp:
+            type: integer
+          type:
+            type: string
+          user_id:
+            type: string
+          app_id:
+            type: string
+        additionalProperties:
+          description: Custom headers
+      payload:
+        type: object
+        description: The message body
+      bindings:
+        amqp:
+          contentEncoding: utf-8
+          messageType: application/json
