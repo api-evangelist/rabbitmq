@@ -5,12 +5,12 @@ type: Index
 image: https://www.rabbitmq.com/img/rabbitmq-logo.svg
 url: https://raw.githubusercontent.com/api-evangelist/rabbitmq/refs/heads/main/apis.yml
 tags:
-  - message broker
-  - messaging
   - AMQP
-  - queue
-  - distributed systems
-  - event streaming
+  - Distributed Systems
+  - Event Streaming
+  - Message Broker
+  - Messaging
+  - Queue
 created: '2024-01-01'
 modified: '2026-03-26'
 specificationVersion: '0.19'
@@ -21,10 +21,10 @@ apis:
     humanURL: https://www.rabbitmq.com/management.html
     baseURL: http://localhost:15672/api
     tags:
-      - management
-      - monitoring
-      - REST API
       - HTTP
+      - Management
+      - Monitoring
+      - REST API
     properties:
       - type: Documentation
         url: https://rawcdn.githack.com/rabbitmq/rabbitmq-server/v3.12.0/deps/rabbitmq_management/priv/www/api/index.html
