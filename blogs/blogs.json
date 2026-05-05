@@ -1,0 +1,13 @@
+{
+  "repo": "rabbitmq",
+  "feeds": [
+    {
+      "source": "https://www.rabbitmq.com/blog/",
+      "feed_url": "https://www.rabbitmq.com/blog/rss.xml",
+      "saved": 10,
+      "title": "RabbitMQ Blog"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:34:24Z"
+}
