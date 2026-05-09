@@ -3,11 +3,11 @@
   "feeds": [
     {
       "source": "https://www.rabbitmq.com/blog/",
-      "feed_url": "https://www.rabbitmq.com/blog/rss.xml",
-      "saved": 10,
-      "title": "RabbitMQ Blog"
+      "feed_url": "https://www.rabbitmq.com/blog/atom.xml",
+      "title": "RabbitMQ Blog",
+      "saved": 0
     }
   ],
   "post_count": 10,
-  "fetched": "2026-05-03T23:34:24Z"
+  "fetched": "2026-05-09T20:17:51Z"
 }
