@@ -1,0 +1,106 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: RabbitMQ Management HTTP API — Definitions
+  description: 'RabbitMQ Management HTTP API — Definitions. 2 operations. Lead operation: Export definitions. Self-contained
+    Naftiko capability covering one Rabbitmq business surface.'
+  tags:
+  - Rabbitmq
+  - Definitions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RABBITMQ_API_KEY: RABBITMQ_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: management-definitions
+    baseUri: http://localhost:15672/api
+    description: RabbitMQ Management HTTP API — Definitions business capability. Self-contained, no shared references.
+    resources:
+    - name: definitions
+      path: /definitions
+      operations:
+      - name: getdefinitions
+        method: GET
+        description: Export definitions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: postdefinitions
+        method: POST
+        description: Import definitions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.RABBITMQ_USER}}'
+      password: '{{env.RABBITMQ_PASS}}'
+  exposes:
+  - type: rest
+    namespace: management-definitions-rest
+    port: 8080
+    description: REST adapter for RabbitMQ Management HTTP API — Definitions. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/definitions
+      name: definitions
+      description: REST surface for definitions.
+      operations:
+      - method: GET
+        name: getdefinitions
+        description: Export definitions
+        call: management-definitions.getdefinitions
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: postdefinitions
+        description: Import definitions
+        call: management-definitions.postdefinitions
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: management-definitions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for RabbitMQ Management HTTP API — Definitions. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: export-definitions
+      description: Export definitions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-definitions.getdefinitions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: import-definitions
+      description: Import definitions
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: management-definitions.postdefinitions
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

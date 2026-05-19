@@ -1,0 +1,214 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: RabbitMQ Management HTTP API — Policies
+  description: 'RabbitMQ Management HTTP API — Policies. 4 operations. Lead operation: List policies in vhost. Self-contained
+    Naftiko capability covering one Rabbitmq business surface.'
+  tags:
+  - Rabbitmq
+  - Policies
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RABBITMQ_API_KEY: RABBITMQ_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: management-policies
+    baseUri: http://localhost:15672/api
+    description: RabbitMQ Management HTTP API — Policies business capability. Self-contained, no shared references.
+    resources:
+    - name: policies-vhost
+      path: /policies/{vhost}
+      operations:
+      - name: listpolicies
+        method: GET
+        description: List policies in vhost
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: vhost
+          in: path
+          type: string
+          required: true
+    - name: policies-vhost-policy
+      path: /policies/{vhost}/{policy}
+      operations:
+      - name: getpolicy
+        method: GET
+        description: Get policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: vhost
+          in: path
+          type: string
+          required: true
+        - name: policy
+          in: path
+          type: string
+          required: true
+      - name: createpolicy
+        method: PUT
+        description: Create or update policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: vhost
+          in: path
+          type: string
+          required: true
+        - name: policy
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletepolicy
+        method: DELETE
+        description: Delete policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: vhost
+          in: path
+          type: string
+          required: true
+        - name: policy
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.RABBITMQ_USER}}'
+      password: '{{env.RABBITMQ_PASS}}'
+  exposes:
+  - type: rest
+    namespace: management-policies-rest
+    port: 8080
+    description: REST adapter for RabbitMQ Management HTTP API — Policies. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/policies/{vhost}
+      name: policies-vhost
+      description: REST surface for policies-vhost.
+      operations:
+      - method: GET
+        name: listpolicies
+        description: List policies in vhost
+        call: management-policies.listpolicies
+        with:
+          vhost: rest.vhost
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/policies/{vhost}/{policy}
+      name: policies-vhost-policy
+      description: REST surface for policies-vhost-policy.
+      operations:
+      - method: GET
+        name: getpolicy
+        description: Get policy
+        call: management-policies.getpolicy
+        with:
+          vhost: rest.vhost
+          policy: rest.policy
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: createpolicy
+        description: Create or update policy
+        call: management-policies.createpolicy
+        with:
+          vhost: rest.vhost
+          policy: rest.policy
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletepolicy
+        description: Delete policy
+        call: management-policies.deletepolicy
+        with:
+          vhost: rest.vhost
+          policy: rest.policy
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: management-policies-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for RabbitMQ Management HTTP API — Policies. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-policies-vhost
+      description: List policies in vhost
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-policies.listpolicies
+      with:
+        vhost: tools.vhost
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-policy
+      description: Get policy
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-policies.getpolicy
+      with:
+        vhost: tools.vhost
+        policy: tools.policy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-update-policy
+      description: Create or update policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-policies.createpolicy
+      with:
+        vhost: tools.vhost
+        policy: tools.policy
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-policy
+      description: Delete policy
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: management-policies.deletepolicy
+      with:
+        vhost: tools.vhost
+        policy: tools.policy
+      outputParameters:
+      - type: object
+        mapping: $.

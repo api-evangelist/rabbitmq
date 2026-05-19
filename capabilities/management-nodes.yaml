@@ -1,0 +1,112 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: RabbitMQ Management HTTP API — Nodes
+  description: 'RabbitMQ Management HTTP API — Nodes. 2 operations. Lead operation: List nodes. Self-contained Naftiko capability
+    covering one Rabbitmq business surface.'
+  tags:
+  - Rabbitmq
+  - Nodes
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RABBITMQ_API_KEY: RABBITMQ_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: management-nodes
+    baseUri: http://localhost:15672/api
+    description: RabbitMQ Management HTTP API — Nodes business capability. Self-contained, no shared references.
+    resources:
+    - name: nodes
+      path: /nodes
+      operations:
+      - name: listnodes
+        method: GET
+        description: List nodes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: nodes-name
+      path: /nodes/{name}
+      operations:
+      - name: getnode
+        method: GET
+        description: Get node details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.RABBITMQ_USER}}'
+      password: '{{env.RABBITMQ_PASS}}'
+  exposes:
+  - type: rest
+    namespace: management-nodes-rest
+    port: 8080
+    description: REST adapter for RabbitMQ Management HTTP API — Nodes. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/nodes
+      name: nodes
+      description: REST surface for nodes.
+      operations:
+      - method: GET
+        name: listnodes
+        description: List nodes
+        call: management-nodes.listnodes
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/nodes/{name}
+      name: nodes-name
+      description: REST surface for nodes-name.
+      operations:
+      - method: GET
+        name: getnode
+        description: Get node details
+        call: management-nodes.getnode
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: management-nodes-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for RabbitMQ Management HTTP API — Nodes. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-nodes
+      description: List nodes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-nodes.listnodes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-node-details
+      description: Get node details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-nodes.getnode
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.

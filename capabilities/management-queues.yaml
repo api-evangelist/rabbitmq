@@ -1,0 +1,357 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: RabbitMQ Management HTTP API — Queues
+  description: 'RabbitMQ Management HTTP API — Queues. 7 operations. Lead operation: List all queues. Self-contained Naftiko
+    capability covering one Rabbitmq business surface.'
+  tags:
+  - Rabbitmq
+  - Queues
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RABBITMQ_API_KEY: RABBITMQ_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: management-queues
+    baseUri: http://localhost:15672/api
+    description: RabbitMQ Management HTTP API — Queues business capability. Self-contained, no shared references.
+    resources:
+    - name: queues
+      path: /queues
+      operations:
+      - name: listqueues
+        method: GET
+        description: List all queues
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: queues-vhost
+      path: /queues/{vhost}
+      operations:
+      - name: listqueuesinvhost
+        method: GET
+        description: List queues in virtual host
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: vhost
+          in: path
+          type: string
+          required: true
+    - name: queues-vhost-queue
+      path: /queues/{vhost}/{queue}
+      operations:
+      - name: getqueue
+        method: GET
+        description: Get queue
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: vhost
+          in: path
+          type: string
+          required: true
+        - name: queue
+          in: path
+          type: string
+          required: true
+      - name: createqueue
+        method: PUT
+        description: Create queue
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: vhost
+          in: path
+          type: string
+          required: true
+        - name: queue
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletequeue
+        method: DELETE
+        description: Delete queue
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: vhost
+          in: path
+          type: string
+          required: true
+        - name: queue
+          in: path
+          type: string
+          required: true
+        - name: if-empty
+          in: query
+          type: boolean
+        - name: if-unused
+          in: query
+          type: boolean
+    - name: queues-vhost-queue-get
+      path: /queues/{vhost}/{queue}/get
+      operations:
+      - name: getmessages
+        method: POST
+        description: Get messages from queue
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: vhost
+          in: path
+          type: string
+          required: true
+        - name: queue
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: queues-vhost-queue-purge
+      path: /queues/{vhost}/{queue}/purge
+      operations:
+      - name: purgequeue
+        method: DELETE
+        description: Purge queue
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: vhost
+          in: path
+          type: string
+          required: true
+        - name: queue
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.RABBITMQ_USER}}'
+      password: '{{env.RABBITMQ_PASS}}'
+  exposes:
+  - type: rest
+    namespace: management-queues-rest
+    port: 8080
+    description: REST adapter for RabbitMQ Management HTTP API — Queues. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/queues
+      name: queues
+      description: REST surface for queues.
+      operations:
+      - method: GET
+        name: listqueues
+        description: List all queues
+        call: management-queues.listqueues
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/queues/{vhost}
+      name: queues-vhost
+      description: REST surface for queues-vhost.
+      operations:
+      - method: GET
+        name: listqueuesinvhost
+        description: List queues in virtual host
+        call: management-queues.listqueuesinvhost
+        with:
+          vhost: rest.vhost
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/queues/{vhost}/{queue}
+      name: queues-vhost-queue
+      description: REST surface for queues-vhost-queue.
+      operations:
+      - method: GET
+        name: getqueue
+        description: Get queue
+        call: management-queues.getqueue
+        with:
+          vhost: rest.vhost
+          queue: rest.queue
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: createqueue
+        description: Create queue
+        call: management-queues.createqueue
+        with:
+          vhost: rest.vhost
+          queue: rest.queue
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletequeue
+        description: Delete queue
+        call: management-queues.deletequeue
+        with:
+          vhost: rest.vhost
+          queue: rest.queue
+          if-empty: rest.if-empty
+          if-unused: rest.if-unused
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/queues/{vhost}/{queue}/get
+      name: queues-vhost-queue-get
+      description: REST surface for queues-vhost-queue-get.
+      operations:
+      - method: POST
+        name: getmessages
+        description: Get messages from queue
+        call: management-queues.getmessages
+        with:
+          vhost: rest.vhost
+          queue: rest.queue
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/queues/{vhost}/{queue}/purge
+      name: queues-vhost-queue-purge
+      description: REST surface for queues-vhost-queue-purge.
+      operations:
+      - method: DELETE
+        name: purgequeue
+        description: Purge queue
+        call: management-queues.purgequeue
+        with:
+          vhost: rest.vhost
+          queue: rest.queue
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: management-queues-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for RabbitMQ Management HTTP API — Queues. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-all-queues
+      description: List all queues
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-queues.listqueues
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-queues-virtual-host
+      description: List queues in virtual host
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-queues.listqueuesinvhost
+      with:
+        vhost: tools.vhost
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-queue
+      description: Get queue
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-queues.getqueue
+      with:
+        vhost: tools.vhost
+        queue: tools.queue
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-queue
+      description: Create queue
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-queues.createqueue
+      with:
+        vhost: tools.vhost
+        queue: tools.queue
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-queue
+      description: Delete queue
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: management-queues.deletequeue
+      with:
+        vhost: tools.vhost
+        queue: tools.queue
+        if-empty: tools.if-empty
+        if-unused: tools.if-unused
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-messages-queue
+      description: Get messages from queue
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: management-queues.getmessages
+      with:
+        vhost: tools.vhost
+        queue: tools.queue
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: purge-queue
+      description: Purge queue
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: management-queues.purgequeue
+      with:
+        vhost: tools.vhost
+        queue: tools.queue
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,177 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: RabbitMQ Management HTTP API — Bindings
+  description: 'RabbitMQ Management HTTP API — Bindings. 3 operations. Lead operation: List all bindings. Self-contained Naftiko
+    capability covering one Rabbitmq business surface.'
+  tags:
+  - Rabbitmq
+  - Bindings
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RABBITMQ_API_KEY: RABBITMQ_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: management-bindings
+    baseUri: http://localhost:15672/api
+    description: RabbitMQ Management HTTP API — Bindings business capability. Self-contained, no shared references.
+    resources:
+    - name: bindings
+      path: /bindings
+      operations:
+      - name: listbindings
+        method: GET
+        description: List all bindings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: bindings-vhost-e-exchange-q-queue
+      path: /bindings/{vhost}/e/{exchange}/q/{queue}
+      operations:
+      - name: listbindingsbetween
+        method: GET
+        description: List bindings between exchange and queue
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: vhost
+          in: path
+          type: string
+          required: true
+        - name: exchange
+          in: path
+          type: string
+          required: true
+        - name: queue
+          in: path
+          type: string
+          required: true
+      - name: createbinding
+        method: POST
+        description: Create binding
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: vhost
+          in: path
+          type: string
+          required: true
+        - name: exchange
+          in: path
+          type: string
+          required: true
+        - name: queue
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.RABBITMQ_USER}}'
+      password: '{{env.RABBITMQ_PASS}}'
+  exposes:
+  - type: rest
+    namespace: management-bindings-rest
+    port: 8080
+    description: REST adapter for RabbitMQ Management HTTP API — Bindings. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/bindings
+      name: bindings
+      description: REST surface for bindings.
+      operations:
+      - method: GET
+        name: listbindings
+        description: List all bindings
+        call: management-bindings.listbindings
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/bindings/{vhost}/e/{exchange}/q/{queue}
+      name: bindings-vhost-e-exchange-q-queue
+      description: REST surface for bindings-vhost-e-exchange-q-queue.
+      operations:
+      - method: GET
+        name: listbindingsbetween
+        description: List bindings between exchange and queue
+        call: management-bindings.listbindingsbetween
+        with:
+          vhost: rest.vhost
+          exchange: rest.exchange
+          queue: rest.queue
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createbinding
+        description: Create binding
+        call: management-bindings.createbinding
+        with:
+          vhost: rest.vhost
+          exchange: rest.exchange
+          queue: rest.queue
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: management-bindings-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for RabbitMQ Management HTTP API — Bindings. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-all-bindings
+      description: List all bindings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-bindings.listbindings
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-bindings-between-exchange-and
+      description: List bindings between exchange and queue
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-bindings.listbindingsbetween
+      with:
+        vhost: tools.vhost
+        exchange: tools.exchange
+        queue: tools.queue
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-binding
+      description: Create binding
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: management-bindings.createbinding
+      with:
+        vhost: tools.vhost
+        exchange: tools.exchange
+        queue: tools.queue
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
