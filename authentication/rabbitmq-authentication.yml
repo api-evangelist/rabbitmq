@@ -1,0 +1,12 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/rabbitmq-management.yml
+summary:
+  types:
+  - http
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  sources:
+  - openapi/rabbitmq-management.yml

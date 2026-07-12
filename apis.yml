@@ -55,6 +55,10 @@ apis:
       - type: JSONSchema
         url: json-schema/rabbitmq-message.json
 common:
+  - type: DomainSecurity
+    url: security/rabbitmq-domain-security.yml
+  - type: Authentication
+    url: authentication/rabbitmq-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/rabbitmq
   - type: GitHubOrganization
