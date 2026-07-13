@@ -1,0 +1,14 @@
+# rabbitmq — AsyncAPI Spectral ruleset (strengthened)
+# Plain Spectral. Rules measured from this provider's own AsyncAPI event
+# conventions by strengthen_asyncapi.py, then self-validated against the spec.
+#
+# Provenance:
+extends:
+  - spectral:asyncapi
+rules:
+  no-empty-descriptions:
+    description: Descriptions must not be empty strings.
+    severity: warn
+    given: $..description
+    then:
+      function: truthy
