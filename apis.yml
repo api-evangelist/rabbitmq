@@ -55,6 +55,8 @@ apis:
       - type: JSONSchema
         url: json-schema/rabbitmq-message.json
 common:
+  - type: AgenticAccess
+    url: agentic-access/rabbitmq-agentic-access.yml
   - type: DomainSecurity
     url: security/rabbitmq-domain-security.yml
   - type: Authentication
