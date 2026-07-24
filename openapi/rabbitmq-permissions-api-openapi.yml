@@ -1,0 +1,109 @@
+openapi: 3.1.0
+info:
+  title: RabbitMQ Management HTTP Bindings Permissions API
+  description: The RabbitMQ Management Plugin provides an HTTP-based API for management and monitoring of RabbitMQ nodes and clusters. It allows management of exchanges, queues, bindings, virtual hosts, users, permissions, policies, and more.
+  version: 3.13.0
+  contact:
+    name: RabbitMQ
+    url: https://www.rabbitmq.com/
+  license:
+    name: MPL 2.0
+    url: https://www.mozilla.org/en-US/MPL/2.0/
+servers:
+- url: http://localhost:15672/api
+  description: Default RabbitMQ Management API
+security:
+- basicAuth: []
+tags:
+- name: Permissions
+paths:
+  /permissions/{vhost}/{user}:
+    get:
+      summary: Get user permissions
+      operationId: getUserPermissions
+      tags:
+      - Permissions
+      parameters:
+      - name: vhost
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: user
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: User permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Permission'
+    put:
+      summary: Set user permissions
+      operationId: setUserPermissions
+      tags:
+      - Permissions
+      parameters:
+      - name: vhost
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: user
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Permission'
+      responses:
+        '204':
+          description: Permissions set
+    delete:
+      summary: Delete user permissions
+      operationId: deleteUserPermissions
+      tags:
+      - Permissions
+      parameters:
+      - name: vhost
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: user
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Permissions deleted
+components:
+  schemas:
+    Permission:
+      type: object
+      properties:
+        user:
+          type: string
+        vhost:
+          type: string
+        configure:
+          type: string
+          description: Regex for configure permissions
+        write:
+          type: string
+          description: Regex for write permissions
+        read:
+          type: string
+          description: Regex for read permissions
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

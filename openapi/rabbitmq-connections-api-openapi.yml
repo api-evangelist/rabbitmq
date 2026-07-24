@@ -1,0 +1,96 @@
+openapi: 3.1.0
+info:
+  title: RabbitMQ Management HTTP Bindings Connections API
+  description: The RabbitMQ Management Plugin provides an HTTP-based API for management and monitoring of RabbitMQ nodes and clusters. It allows management of exchanges, queues, bindings, virtual hosts, users, permissions, policies, and more.
+  version: 3.13.0
+  contact:
+    name: RabbitMQ
+    url: https://www.rabbitmq.com/
+  license:
+    name: MPL 2.0
+    url: https://www.mozilla.org/en-US/MPL/2.0/
+servers:
+- url: http://localhost:15672/api
+  description: Default RabbitMQ Management API
+security:
+- basicAuth: []
+tags:
+- name: Connections
+paths:
+  /connections:
+    get:
+      summary: List connections
+      operationId: listConnections
+      tags:
+      - Connections
+      responses:
+        '200':
+          description: List of connections
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Connection'
+  /connections/{name}:
+    get:
+      summary: Get connection
+      operationId: getConnection
+      tags:
+      - Connections
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Connection details
+    delete:
+      summary: Close connection
+      operationId: deleteConnection
+      tags:
+      - Connections
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Connection closed
+components:
+  schemas:
+    Connection:
+      type: object
+      properties:
+        name:
+          type: string
+        node:
+          type: string
+        state:
+          type: string
+        type:
+          type: string
+        protocol:
+          type: string
+        host:
+          type: string
+        port:
+          type: integer
+        peer_host:
+          type: string
+        peer_port:
+          type: integer
+        user:
+          type: string
+        vhost:
+          type: string
+        channels:
+          type: integer
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

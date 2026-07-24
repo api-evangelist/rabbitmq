@@ -1,0 +1,230 @@
+openapi: 3.1.0
+info:
+  title: RabbitMQ Management HTTP Bindings Definitions API
+  description: The RabbitMQ Management Plugin provides an HTTP-based API for management and monitoring of RabbitMQ nodes and clusters. It allows management of exchanges, queues, bindings, virtual hosts, users, permissions, policies, and more.
+  version: 3.13.0
+  contact:
+    name: RabbitMQ
+    url: https://www.rabbitmq.com/
+  license:
+    name: MPL 2.0
+    url: https://www.mozilla.org/en-US/MPL/2.0/
+servers:
+- url: http://localhost:15672/api
+  description: Default RabbitMQ Management API
+security:
+- basicAuth: []
+tags:
+- name: Definitions
+paths:
+  /definitions:
+    get:
+      summary: Export definitions
+      operationId: getDefinitions
+      tags:
+      - Definitions
+      responses:
+        '200':
+          description: Server definitions (users, vhosts, permissions, queues, exchanges, bindings, policies)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Definitions'
+    post:
+      summary: Import definitions
+      operationId: postDefinitions
+      tags:
+      - Definitions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Definitions'
+      responses:
+        '200':
+          description: Definitions imported
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        name:
+          type: string
+        tags:
+          type: string
+        password_hash:
+          type: string
+        hashing_algorithm:
+          type: string
+    Policy:
+      type: object
+      properties:
+        vhost:
+          type: string
+        name:
+          type: string
+        pattern:
+          type: string
+        apply-to:
+          type: string
+          enum:
+          - queues
+          - exchanges
+          - all
+          - classic_queues
+          - quorum_queues
+          - streams
+        priority:
+          type: integer
+        definition:
+          type: object
+    Binding:
+      type: object
+      properties:
+        source:
+          type: string
+        vhost:
+          type: string
+        destination:
+          type: string
+        destination_type:
+          type: string
+          enum:
+          - queue
+          - exchange
+        routing_key:
+          type: string
+        arguments:
+          type: object
+        properties_key:
+          type: string
+    Definitions:
+      type: object
+      properties:
+        rabbit_version:
+          type: string
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        vhosts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Vhost'
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Permission'
+        queues:
+          type: array
+          items:
+            $ref: '#/components/schemas/Queue'
+        exchanges:
+          type: array
+          items:
+            $ref: '#/components/schemas/Exchange'
+        bindings:
+          type: array
+          items:
+            $ref: '#/components/schemas/Binding'
+        policies:
+          type: array
+          items:
+            $ref: '#/components/schemas/Policy'
+    Exchange:
+      type: object
+      properties:
+        name:
+          type: string
+        vhost:
+          type: string
+        type:
+          type: string
+          enum:
+          - direct
+          - fanout
+          - topic
+          - headers
+          - x-consistent-hash
+          - x-modulus-hash
+        durable:
+          type: boolean
+        auto_delete:
+          type: boolean
+        internal:
+          type: boolean
+        arguments:
+          type: object
+    Queue:
+      type: object
+      properties:
+        name:
+          type: string
+        vhost:
+          type: string
+        durable:
+          type: boolean
+        auto_delete:
+          type: boolean
+        exclusive:
+          type: boolean
+        arguments:
+          type: object
+        node:
+          type: string
+        state:
+          type: string
+        type:
+          type: string
+          enum:
+          - classic
+          - quorum
+          - stream
+        messages:
+          type: integer
+        messages_ready:
+          type: integer
+        messages_unacknowledged:
+          type: integer
+        consumers:
+          type: integer
+    Vhost:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        tracing:
+          type: boolean
+        messages:
+          type: integer
+        messages_ready:
+          type: integer
+        messages_unacknowledged:
+          type: integer
+    Permission:
+      type: object
+      properties:
+        user:
+          type: string
+        vhost:
+          type: string
+        configure:
+          type: string
+          description: Regex for configure permissions
+        write:
+          type: string
+          description: Regex for write permissions
+        read:
+          type: string
+          description: Regex for read permissions
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

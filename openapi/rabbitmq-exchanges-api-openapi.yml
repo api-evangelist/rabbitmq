@@ -1,0 +1,241 @@
+openapi: 3.1.0
+info:
+  title: RabbitMQ Management HTTP Bindings Exchanges API
+  description: The RabbitMQ Management Plugin provides an HTTP-based API for management and monitoring of RabbitMQ nodes and clusters. It allows management of exchanges, queues, bindings, virtual hosts, users, permissions, policies, and more.
+  version: 3.13.0
+  contact:
+    name: RabbitMQ
+    url: https://www.rabbitmq.com/
+  license:
+    name: MPL 2.0
+    url: https://www.mozilla.org/en-US/MPL/2.0/
+servers:
+- url: http://localhost:15672/api
+  description: Default RabbitMQ Management API
+security:
+- basicAuth: []
+tags:
+- name: Exchanges
+paths:
+  /exchanges:
+    get:
+      summary: List all exchanges
+      operationId: listExchanges
+      tags:
+      - Exchanges
+      responses:
+        '200':
+          description: List of exchanges
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Exchange'
+  /exchanges/{vhost}:
+    get:
+      summary: List exchanges in a virtual host
+      operationId: listExchangesInVhost
+      tags:
+      - Exchanges
+      parameters:
+      - name: vhost
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of exchanges
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Exchange'
+  /exchanges/{vhost}/{exchange}:
+    get:
+      summary: Get exchange
+      operationId: getExchange
+      tags:
+      - Exchanges
+      parameters:
+      - name: vhost
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: exchange
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Exchange details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exchange'
+    put:
+      summary: Create exchange
+      operationId: createExchange
+      tags:
+      - Exchanges
+      parameters:
+      - name: vhost
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: exchange
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExchangeCreate'
+      responses:
+        '201':
+          description: Exchange created
+        '204':
+          description: Exchange updated
+    delete:
+      summary: Delete exchange
+      operationId: deleteExchange
+      tags:
+      - Exchanges
+      parameters:
+      - name: vhost
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: exchange
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: if-unused
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '204':
+          description: Exchange deleted
+  /exchanges/{vhost}/{exchange}/publish:
+    post:
+      summary: Publish message to exchange
+      operationId: publishMessage
+      tags:
+      - Exchanges
+      parameters:
+      - name: vhost
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: exchange
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublishMessage'
+      responses:
+        '200':
+          description: Publish result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  routed:
+                    type: boolean
+components:
+  schemas:
+    ExchangeCreate:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - direct
+          - fanout
+          - topic
+          - headers
+        durable:
+          type: boolean
+          default: true
+        auto_delete:
+          type: boolean
+          default: false
+        internal:
+          type: boolean
+          default: false
+        arguments:
+          type: object
+      required:
+      - type
+    PublishMessage:
+      type: object
+      required:
+      - routing_key
+      - payload
+      - payload_encoding
+      - properties
+      properties:
+        routing_key:
+          type: string
+        payload:
+          type: string
+        payload_encoding:
+          type: string
+          enum:
+          - string
+          - base64
+        properties:
+          type: object
+          properties:
+            delivery_mode:
+              type: integer
+            headers:
+              type: object
+            content_type:
+              type: string
+    Exchange:
+      type: object
+      properties:
+        name:
+          type: string
+        vhost:
+          type: string
+        type:
+          type: string
+          enum:
+          - direct
+          - fanout
+          - topic
+          - headers
+          - x-consistent-hash
+          - x-modulus-hash
+        durable:
+          type: boolean
+        auto_delete:
+          type: boolean
+        internal:
+          type: boolean
+        arguments:
+          type: object
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

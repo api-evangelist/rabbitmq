@@ -1,0 +1,63 @@
+openapi: 3.1.0
+info:
+  title: RabbitMQ Management HTTP Bindings Channels API
+  description: The RabbitMQ Management Plugin provides an HTTP-based API for management and monitoring of RabbitMQ nodes and clusters. It allows management of exchanges, queues, bindings, virtual hosts, users, permissions, policies, and more.
+  version: 3.13.0
+  contact:
+    name: RabbitMQ
+    url: https://www.rabbitmq.com/
+  license:
+    name: MPL 2.0
+    url: https://www.mozilla.org/en-US/MPL/2.0/
+servers:
+- url: http://localhost:15672/api
+  description: Default RabbitMQ Management API
+security:
+- basicAuth: []
+tags:
+- name: Channels
+paths:
+  /channels:
+    get:
+      summary: List channels
+      operationId: listChannels
+      tags:
+      - Channels
+      responses:
+        '200':
+          description: List of channels
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Channel'
+components:
+  schemas:
+    Channel:
+      type: object
+      properties:
+        name:
+          type: string
+        node:
+          type: string
+        connection_details:
+          type: object
+        number:
+          type: integer
+        user:
+          type: string
+        vhost:
+          type: string
+        state:
+          type: string
+        consumer_count:
+          type: integer
+        messages_unacknowledged:
+          type: integer
+        prefetch_count:
+          type: integer
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

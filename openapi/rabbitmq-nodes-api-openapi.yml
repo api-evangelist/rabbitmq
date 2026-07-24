@@ -1,0 +1,91 @@
+openapi: 3.1.0
+info:
+  title: RabbitMQ Management HTTP Bindings Nodes API
+  description: The RabbitMQ Management Plugin provides an HTTP-based API for management and monitoring of RabbitMQ nodes and clusters. It allows management of exchanges, queues, bindings, virtual hosts, users, permissions, policies, and more.
+  version: 3.13.0
+  contact:
+    name: RabbitMQ
+    url: https://www.rabbitmq.com/
+  license:
+    name: MPL 2.0
+    url: https://www.mozilla.org/en-US/MPL/2.0/
+servers:
+- url: http://localhost:15672/api
+  description: Default RabbitMQ Management API
+security:
+- basicAuth: []
+tags:
+- name: Nodes
+paths:
+  /nodes:
+    get:
+      summary: List nodes
+      operationId: listNodes
+      tags:
+      - Nodes
+      responses:
+        '200':
+          description: List of cluster nodes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Node'
+  /nodes/{name}:
+    get:
+      summary: Get node details
+      operationId: getNode
+      tags:
+      - Nodes
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Node details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Node'
+components:
+  schemas:
+    Node:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - disc
+          - ram
+        running:
+          type: boolean
+        os_pid:
+          type: string
+        fd_used:
+          type: integer
+        fd_total:
+          type: integer
+        mem_used:
+          type: integer
+        mem_limit:
+          type: integer
+        disk_free:
+          type: integer
+        disk_free_limit:
+          type: integer
+        proc_used:
+          type: integer
+        proc_total:
+          type: integer
+        uptime:
+          type: integer
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

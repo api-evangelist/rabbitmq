@@ -1,0 +1,126 @@
+openapi: 3.1.0
+info:
+  title: RabbitMQ Management HTTP Bindings Users API
+  description: The RabbitMQ Management Plugin provides an HTTP-based API for management and monitoring of RabbitMQ nodes and clusters. It allows management of exchanges, queues, bindings, virtual hosts, users, permissions, policies, and more.
+  version: 3.13.0
+  contact:
+    name: RabbitMQ
+    url: https://www.rabbitmq.com/
+  license:
+    name: MPL 2.0
+    url: https://www.mozilla.org/en-US/MPL/2.0/
+servers:
+- url: http://localhost:15672/api
+  description: Default RabbitMQ Management API
+security:
+- basicAuth: []
+tags:
+- name: Users
+paths:
+  /users:
+    get:
+      summary: List users
+      operationId: listUsers
+      tags:
+      - Users
+      responses:
+        '200':
+          description: List of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+  /users/{user}:
+    get:
+      summary: Get user
+      operationId: getUser
+      tags:
+      - Users
+      parameters:
+      - name: user
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: User details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+    put:
+      summary: Create or update user
+      operationId: createUser
+      tags:
+      - Users
+      parameters:
+      - name: user
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                password_hash:
+                  type: string
+                tags:
+                  type: string
+      responses:
+        '201':
+          description: User created
+        '204':
+          description: User updated
+    delete:
+      summary: Delete user
+      operationId: deleteUser
+      tags:
+      - Users
+      parameters:
+      - name: user
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: User deleted
+  /whoami:
+    get:
+      summary: Get current user
+      operationId: whoami
+      tags:
+      - Users
+      responses:
+        '200':
+          description: Current authenticated user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        name:
+          type: string
+        tags:
+          type: string
+        password_hash:
+          type: string
+        hashing_algorithm:
+          type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

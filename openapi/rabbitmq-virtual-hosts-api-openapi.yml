@@ -1,0 +1,120 @@
+openapi: 3.1.0
+info:
+  title: RabbitMQ Management HTTP Bindings Virtual Hosts API
+  description: The RabbitMQ Management Plugin provides an HTTP-based API for management and monitoring of RabbitMQ nodes and clusters. It allows management of exchanges, queues, bindings, virtual hosts, users, permissions, policies, and more.
+  version: 3.13.0
+  contact:
+    name: RabbitMQ
+    url: https://www.rabbitmq.com/
+  license:
+    name: MPL 2.0
+    url: https://www.mozilla.org/en-US/MPL/2.0/
+servers:
+- url: http://localhost:15672/api
+  description: Default RabbitMQ Management API
+security:
+- basicAuth: []
+tags:
+- name: Virtual Hosts
+paths:
+  /vhosts:
+    get:
+      summary: List virtual hosts
+      operationId: listVhosts
+      tags:
+      - Virtual Hosts
+      responses:
+        '200':
+          description: List of virtual hosts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Vhost'
+  /vhosts/{vhost}:
+    get:
+      summary: Get virtual host
+      operationId: getVhost
+      tags:
+      - Virtual Hosts
+      parameters:
+      - name: vhost
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Virtual host details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vhost'
+    put:
+      summary: Create virtual host
+      operationId: createVhost
+      tags:
+      - Virtual Hosts
+      parameters:
+      - name: vhost
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                tags:
+                  type: string
+                tracing:
+                  type: boolean
+      responses:
+        '201':
+          description: Virtual host created
+        '204':
+          description: Virtual host updated
+    delete:
+      summary: Delete virtual host
+      operationId: deleteVhost
+      tags:
+      - Virtual Hosts
+      parameters:
+      - name: vhost
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Virtual host deleted
+components:
+  schemas:
+    Vhost:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        tracing:
+          type: boolean
+        messages:
+          type: integer
+        messages_ready:
+          type: integer
+        messages_unacknowledged:
+          type: integer
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

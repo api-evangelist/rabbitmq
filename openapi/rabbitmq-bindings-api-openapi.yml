@@ -1,0 +1,126 @@
+openapi: 3.1.0
+info:
+  title: RabbitMQ Management HTTP Bindings API
+  description: The RabbitMQ Management Plugin provides an HTTP-based API for management and monitoring of RabbitMQ nodes and clusters. It allows management of exchanges, queues, bindings, virtual hosts, users, permissions, policies, and more.
+  version: 3.13.0
+  contact:
+    name: RabbitMQ
+    url: https://www.rabbitmq.com/
+  license:
+    name: MPL 2.0
+    url: https://www.mozilla.org/en-US/MPL/2.0/
+servers:
+- url: http://localhost:15672/api
+  description: Default RabbitMQ Management API
+security:
+- basicAuth: []
+tags:
+- name: Bindings
+paths:
+  /bindings:
+    get:
+      summary: List all bindings
+      operationId: listBindings
+      tags:
+      - Bindings
+      responses:
+        '200':
+          description: List of bindings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Binding'
+  /bindings/{vhost}/e/{exchange}/q/{queue}:
+    get:
+      summary: List bindings between exchange and queue
+      operationId: listBindingsBetween
+      tags:
+      - Bindings
+      parameters:
+      - name: vhost
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: exchange
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: queue
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of bindings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Binding'
+    post:
+      summary: Create binding
+      operationId: createBinding
+      tags:
+      - Bindings
+      parameters:
+      - name: vhost
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: exchange
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: queue
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                routing_key:
+                  type: string
+                arguments:
+                  type: object
+      responses:
+        '201':
+          description: Binding created
+components:
+  schemas:
+    Binding:
+      type: object
+      properties:
+        source:
+          type: string
+        vhost:
+          type: string
+        destination:
+          type: string
+        destination_type:
+          type: string
+          enum:
+          - queue
+          - exchange
+        routing_key:
+          type: string
+        arguments:
+          type: object
+        properties_key:
+          type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

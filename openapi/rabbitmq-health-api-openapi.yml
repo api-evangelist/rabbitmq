@@ -1,0 +1,46 @@
+openapi: 3.1.0
+info:
+  title: RabbitMQ Management HTTP Bindings Health API
+  description: The RabbitMQ Management Plugin provides an HTTP-based API for management and monitoring of RabbitMQ nodes and clusters. It allows management of exchanges, queues, bindings, virtual hosts, users, permissions, policies, and more.
+  version: 3.13.0
+  contact:
+    name: RabbitMQ
+    url: https://www.rabbitmq.com/
+  license:
+    name: MPL 2.0
+    url: https://www.mozilla.org/en-US/MPL/2.0/
+servers:
+- url: http://localhost:15672/api
+  description: Default RabbitMQ Management API
+security:
+- basicAuth: []
+tags:
+- name: Health
+paths:
+  /health/checks/alarms:
+    get:
+      summary: Health check - alarms
+      operationId: healthCheckAlarms
+      tags:
+      - Health
+      responses:
+        '200':
+          description: No alarms
+        '503':
+          description: Alarms in effect
+  /health/checks/local-alarms:
+    get:
+      summary: Health check - local alarms
+      operationId: healthCheckLocalAlarms
+      tags:
+      - Health
+      responses:
+        '200':
+          description: No local alarms
+        '503':
+          description: Local alarms in effect
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

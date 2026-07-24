@@ -1,0 +1,307 @@
+openapi: 3.1.0
+info:
+  title: RabbitMQ Management HTTP Bindings Queues API
+  description: The RabbitMQ Management Plugin provides an HTTP-based API for management and monitoring of RabbitMQ nodes and clusters. It allows management of exchanges, queues, bindings, virtual hosts, users, permissions, policies, and more.
+  version: 3.13.0
+  contact:
+    name: RabbitMQ
+    url: https://www.rabbitmq.com/
+  license:
+    name: MPL 2.0
+    url: https://www.mozilla.org/en-US/MPL/2.0/
+servers:
+- url: http://localhost:15672/api
+  description: Default RabbitMQ Management API
+security:
+- basicAuth: []
+tags:
+- name: Queues
+paths:
+  /queues:
+    get:
+      summary: List all queues
+      operationId: listQueues
+      tags:
+      - Queues
+      responses:
+        '200':
+          description: List of queues
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Queue'
+  /queues/{vhost}:
+    get:
+      summary: List queues in virtual host
+      operationId: listQueuesInVhost
+      tags:
+      - Queues
+      parameters:
+      - name: vhost
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of queues
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Queue'
+  /queues/{vhost}/{queue}:
+    get:
+      summary: Get queue
+      operationId: getQueue
+      tags:
+      - Queues
+      parameters:
+      - name: vhost
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: queue
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Queue details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Queue'
+    put:
+      summary: Create queue
+      operationId: createQueue
+      tags:
+      - Queues
+      parameters:
+      - name: vhost
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: queue
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueueCreate'
+      responses:
+        '201':
+          description: Queue created
+        '204':
+          description: Queue updated
+    delete:
+      summary: Delete queue
+      operationId: deleteQueue
+      tags:
+      - Queues
+      parameters:
+      - name: vhost
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: queue
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: if-empty
+        in: query
+        schema:
+          type: boolean
+      - name: if-unused
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '204':
+          description: Queue deleted
+  /queues/{vhost}/{queue}/get:
+    post:
+      summary: Get messages from queue
+      operationId: getMessages
+      tags:
+      - Queues
+      parameters:
+      - name: vhost
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: queue
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                count:
+                  type: integer
+                ackmode:
+                  type: string
+                  enum:
+                  - ack_requeue_true
+                  - ack_requeue_false
+                  - reject_requeue_true
+                  - reject_requeue_false
+                encoding:
+                  type: string
+                  enum:
+                  - auto
+                  - base64
+      responses:
+        '200':
+          description: Messages from queue
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Message'
+  /queues/{vhost}/{queue}/purge:
+    delete:
+      summary: Purge queue
+      operationId: purgeQueue
+      tags:
+      - Queues
+      parameters:
+      - name: vhost
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: queue
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Queue purged
+components:
+  schemas:
+    Queue:
+      type: object
+      properties:
+        name:
+          type: string
+        vhost:
+          type: string
+        durable:
+          type: boolean
+        auto_delete:
+          type: boolean
+        exclusive:
+          type: boolean
+        arguments:
+          type: object
+        node:
+          type: string
+        state:
+          type: string
+        type:
+          type: string
+          enum:
+          - classic
+          - quorum
+          - stream
+        messages:
+          type: integer
+        messages_ready:
+          type: integer
+        messages_unacknowledged:
+          type: integer
+        consumers:
+          type: integer
+    QueueCreate:
+      type: object
+      properties:
+        durable:
+          type: boolean
+          default: true
+        auto_delete:
+          type: boolean
+          default: false
+        arguments:
+          type: object
+          properties:
+            x-queue-type:
+              type: string
+              enum:
+              - classic
+              - quorum
+              - stream
+            x-max-length:
+              type: integer
+            x-message-ttl:
+              type: integer
+            x-dead-letter-exchange:
+              type: string
+            x-dead-letter-routing-key:
+              type: string
+    Message:
+      type: object
+      properties:
+        payload:
+          type: string
+        payload_bytes:
+          type: integer
+        payload_encoding:
+          type: string
+        redelivered:
+          type: boolean
+        exchange:
+          type: string
+        routing_key:
+          type: string
+        message_count:
+          type: integer
+        properties:
+          type: object
+          properties:
+            content_type:
+              type: string
+            delivery_mode:
+              type: integer
+            headers:
+              type: object
+            priority:
+              type: integer
+            correlation_id:
+              type: string
+            reply_to:
+              type: string
+            expiration:
+              type: string
+            message_id:
+              type: string
+            timestamp:
+              type: integer
+            type:
+              type: string
+            app_id:
+              type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

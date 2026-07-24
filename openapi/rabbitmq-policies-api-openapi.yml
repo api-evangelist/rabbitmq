@@ -1,0 +1,132 @@
+openapi: 3.1.0
+info:
+  title: RabbitMQ Management HTTP Bindings Policies API
+  description: The RabbitMQ Management Plugin provides an HTTP-based API for management and monitoring of RabbitMQ nodes and clusters. It allows management of exchanges, queues, bindings, virtual hosts, users, permissions, policies, and more.
+  version: 3.13.0
+  contact:
+    name: RabbitMQ
+    url: https://www.rabbitmq.com/
+  license:
+    name: MPL 2.0
+    url: https://www.mozilla.org/en-US/MPL/2.0/
+servers:
+- url: http://localhost:15672/api
+  description: Default RabbitMQ Management API
+security:
+- basicAuth: []
+tags:
+- name: Policies
+paths:
+  /policies/{vhost}:
+    get:
+      summary: List policies in vhost
+      operationId: listPolicies
+      tags:
+      - Policies
+      parameters:
+      - name: vhost
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of policies
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Policy'
+  /policies/{vhost}/{policy}:
+    get:
+      summary: Get policy
+      operationId: getPolicy
+      tags:
+      - Policies
+      parameters:
+      - name: vhost
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: policy
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Policy details
+    put:
+      summary: Create or update policy
+      operationId: createPolicy
+      tags:
+      - Policies
+      parameters:
+      - name: vhost
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: policy
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Policy'
+      responses:
+        '204':
+          description: Policy set
+    delete:
+      summary: Delete policy
+      operationId: deletePolicy
+      tags:
+      - Policies
+      parameters:
+      - name: vhost
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: policy
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Policy deleted
+components:
+  schemas:
+    Policy:
+      type: object
+      properties:
+        vhost:
+          type: string
+        name:
+          type: string
+        pattern:
+          type: string
+        apply-to:
+          type: string
+          enum:
+          - queues
+          - exchanges
+          - all
+          - classic_queues
+          - quorum_queues
+          - streams
+        priority:
+          type: integer
+        definition:
+          type: object
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
