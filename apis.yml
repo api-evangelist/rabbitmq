@@ -4,6 +4,19 @@ description: >-
   RabbitMQ is a widely deployed open source message broker. It supports multiple messaging protocols and can be deployed
   in distributed and federated configurations to meet high-scale, high-availability requirements.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://www.rabbitmq.com/img/rabbitmq-logo.svg
 url: https://raw.githubusercontent.com/api-evangelist/rabbitmq/refs/heads/main/apis.yml
 tags:
@@ -17,43 +30,219 @@ created: '2024-01-01'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: rabbitmq:rabbitmq-management-http-api
-    name: RabbitMQ Management HTTP API
-    description: >-
-      HTTP-based API for management and monitoring of RabbitMQ nodes and clusters. Allows you to manage exchanges,
-      queues, bindings, users, virtual hosts, permissions, and more.
-    humanURL: https://www.rabbitmq.com/management.html
-    baseURL: http://localhost:15672/api
-    tags:
-      - HTTP
-      - Management
-      - Monitoring
-      - REST API
-    properties:
-      - type: Documentation
-        url: https://rawcdn.githack.com/rabbitmq/rabbitmq-server/v3.12.0/deps/rabbitmq_management/priv/www/api/index.html
-      - type: OpenAPI
-        url: openapi/rabbitmq-management.yml
-      - type: Authentication
-        url: https://www.rabbitmq.com/management.html#permissions
-  - aid: rabbitmq:rabbitmq-amqp-messaging-api
-    name: RabbitMQ AMQP Messaging API
-    description: >-
-      AMQP 0-9-1 messaging protocol for producing and consuming messages via exchanges, queues, and bindings with
-      support for multiple exchange types, message acknowledgment, and consumer groups.
-    humanURL: https://www.rabbitmq.com/tutorials/amqp-concepts.html
-    tags:
-      - AMQP
-      - Messaging
-      - Pub-Sub
-      - Queues
-    properties:
-      - type: Documentation
-        url: https://www.rabbitmq.com/tutorials/amqp-concepts.html
-      - type: AsyncAPI
-        url: asyncapi/rabbitmq-messaging.yml
-      - type: JSONSchema
-        url: json-schema/rabbitmq-message.json
+- aid: rabbitmq:rabbitmq-amqp-messaging-api
+  name: RabbitMQ AMQP Messaging API
+  description: >-
+    AMQP 0-9-1 messaging protocol for producing and consuming messages via exchanges, queues, and bindings
+    with support for multiple exchange types, message acknowledgment, and consumer groups.
+  humanURL: https://www.rabbitmq.com/tutorials/amqp-concepts.html
+  tags:
+  - AMQP
+  - Messaging
+  - Pub-Sub
+  - Queues
+  properties:
+  - type: Documentation
+    url: https://www.rabbitmq.com/tutorials/amqp-concepts.html
+  - type: AsyncAPI
+    url: asyncapi/rabbitmq-messaging.yml
+  - type: JSONSchema
+    url: json-schema/rabbitmq-message.json
+- aid: rabbitmq:rabbitmq-bindings-api
+  name: RabbitMQ Bindings API
+  description: The Bindings API from RabbitMQ — 2 operation(s) for bindings.
+  humanURL: https://www.rabbitmq.com/management.html
+  baseURL: http://localhost:15672/api
+  tags:
+  - Bindings
+  properties:
+  - type: OpenAPI
+    url: openapi/rabbitmq-bindings-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://rawcdn.githack.com/rabbitmq/rabbitmq-server/v3.12.0/deps/rabbitmq_management/priv/www/api/index.html
+  - type: Authentication
+    url: https://www.rabbitmq.com/management.html#permissions
+- aid: rabbitmq:rabbitmq-channels-api
+  name: RabbitMQ Channels API
+  description: The Channels API from RabbitMQ — 1 operation(s) for channels.
+  humanURL: https://www.rabbitmq.com/management.html
+  baseURL: http://localhost:15672/api
+  tags:
+  - Channels
+  properties:
+  - type: OpenAPI
+    url: openapi/rabbitmq-channels-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://rawcdn.githack.com/rabbitmq/rabbitmq-server/v3.12.0/deps/rabbitmq_management/priv/www/api/index.html
+  - type: Authentication
+    url: https://www.rabbitmq.com/management.html#permissions
+- aid: rabbitmq:rabbitmq-connections-api
+  name: RabbitMQ Connections API
+  description: The Connections API from RabbitMQ — 2 operation(s) for connections.
+  humanURL: https://www.rabbitmq.com/management.html
+  baseURL: http://localhost:15672/api
+  tags:
+  - Connections
+  properties:
+  - type: OpenAPI
+    url: openapi/rabbitmq-connections-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://rawcdn.githack.com/rabbitmq/rabbitmq-server/v3.12.0/deps/rabbitmq_management/priv/www/api/index.html
+  - type: Authentication
+    url: https://www.rabbitmq.com/management.html#permissions
+- aid: rabbitmq:rabbitmq-definitions-api
+  name: RabbitMQ Definitions API
+  description: The Definitions API from RabbitMQ — 1 operation(s) for definitions.
+  humanURL: https://www.rabbitmq.com/management.html
+  baseURL: http://localhost:15672/api
+  tags:
+  - Definitions
+  properties:
+  - type: OpenAPI
+    url: openapi/rabbitmq-definitions-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://rawcdn.githack.com/rabbitmq/rabbitmq-server/v3.12.0/deps/rabbitmq_management/priv/www/api/index.html
+  - type: Authentication
+    url: https://www.rabbitmq.com/management.html#permissions
+- aid: rabbitmq:rabbitmq-exchanges-api
+  name: RabbitMQ Exchanges API
+  description: The Exchanges API from RabbitMQ — 4 operation(s) for exchanges.
+  humanURL: https://www.rabbitmq.com/management.html
+  baseURL: http://localhost:15672/api
+  tags:
+  - Exchanges
+  properties:
+  - type: OpenAPI
+    url: openapi/rabbitmq-exchanges-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://rawcdn.githack.com/rabbitmq/rabbitmq-server/v3.12.0/deps/rabbitmq_management/priv/www/api/index.html
+  - type: Authentication
+    url: https://www.rabbitmq.com/management.html#permissions
+- aid: rabbitmq:rabbitmq-health-api
+  name: RabbitMQ Health API
+  description: The Health API from RabbitMQ — 2 operation(s) for health.
+  humanURL: https://www.rabbitmq.com/management.html
+  baseURL: http://localhost:15672/api
+  tags:
+  - Health
+  properties:
+  - type: OpenAPI
+    url: openapi/rabbitmq-health-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://rawcdn.githack.com/rabbitmq/rabbitmq-server/v3.12.0/deps/rabbitmq_management/priv/www/api/index.html
+  - type: Authentication
+    url: https://www.rabbitmq.com/management.html#permissions
+- aid: rabbitmq:rabbitmq-nodes-api
+  name: RabbitMQ Nodes API
+  description: The Nodes API from RabbitMQ — 2 operation(s) for nodes.
+  humanURL: https://www.rabbitmq.com/management.html
+  baseURL: http://localhost:15672/api
+  tags:
+  - Nodes
+  properties:
+  - type: OpenAPI
+    url: openapi/rabbitmq-nodes-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://rawcdn.githack.com/rabbitmq/rabbitmq-server/v3.12.0/deps/rabbitmq_management/priv/www/api/index.html
+  - type: Authentication
+    url: https://www.rabbitmq.com/management.html#permissions
+- aid: rabbitmq:rabbitmq-overview-api
+  name: RabbitMQ Overview API
+  description: The Overview API from RabbitMQ — 2 operation(s) for overview.
+  humanURL: https://www.rabbitmq.com/management.html
+  baseURL: http://localhost:15672/api
+  tags:
+  - Overview
+  properties:
+  - type: OpenAPI
+    url: openapi/rabbitmq-overview-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://rawcdn.githack.com/rabbitmq/rabbitmq-server/v3.12.0/deps/rabbitmq_management/priv/www/api/index.html
+  - type: Authentication
+    url: https://www.rabbitmq.com/management.html#permissions
+- aid: rabbitmq:rabbitmq-permissions-api
+  name: RabbitMQ Permissions API
+  description: The Permissions API from RabbitMQ — 1 operation(s) for permissions.
+  humanURL: https://www.rabbitmq.com/management.html
+  baseURL: http://localhost:15672/api
+  tags:
+  - Permissions
+  properties:
+  - type: OpenAPI
+    url: openapi/rabbitmq-permissions-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://rawcdn.githack.com/rabbitmq/rabbitmq-server/v3.12.0/deps/rabbitmq_management/priv/www/api/index.html
+  - type: Authentication
+    url: https://www.rabbitmq.com/management.html#permissions
+- aid: rabbitmq:rabbitmq-policies-api
+  name: RabbitMQ Policies API
+  description: The Policies API from RabbitMQ — 2 operation(s) for policies.
+  humanURL: https://www.rabbitmq.com/management.html
+  baseURL: http://localhost:15672/api
+  tags:
+  - Policies
+  properties:
+  - type: OpenAPI
+    url: openapi/rabbitmq-policies-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://rawcdn.githack.com/rabbitmq/rabbitmq-server/v3.12.0/deps/rabbitmq_management/priv/www/api/index.html
+  - type: Authentication
+    url: https://www.rabbitmq.com/management.html#permissions
+- aid: rabbitmq:rabbitmq-queues-api
+  name: RabbitMQ Queues API
+  description: The Queues API from RabbitMQ — 5 operation(s) for queues.
+  humanURL: https://www.rabbitmq.com/management.html
+  baseURL: http://localhost:15672/api
+  tags:
+  - Queues
+  properties:
+  - type: OpenAPI
+    url: openapi/rabbitmq-queues-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://rawcdn.githack.com/rabbitmq/rabbitmq-server/v3.12.0/deps/rabbitmq_management/priv/www/api/index.html
+  - type: Authentication
+    url: https://www.rabbitmq.com/management.html#permissions
+- aid: rabbitmq:rabbitmq-users-api
+  name: RabbitMQ Users API
+  description: The Users API from RabbitMQ — 3 operation(s) for users.
+  humanURL: https://www.rabbitmq.com/management.html
+  baseURL: http://localhost:15672/api
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/rabbitmq-users-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://rawcdn.githack.com/rabbitmq/rabbitmq-server/v3.12.0/deps/rabbitmq_management/priv/www/api/index.html
+  - type: Authentication
+    url: https://www.rabbitmq.com/management.html#permissions
+- aid: rabbitmq:rabbitmq-virtual-hosts-api
+  name: RabbitMQ Virtual Hosts API
+  description: The Virtual Hosts API from RabbitMQ — 2 operation(s) for virtual hosts.
+  humanURL: https://www.rabbitmq.com/management.html
+  baseURL: http://localhost:15672/api
+  tags:
+  - Virtual Hosts
+  properties:
+  - type: OpenAPI
+    url: openapi/rabbitmq-virtual-hosts-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://rawcdn.githack.com/rabbitmq/rabbitmq-server/v3.12.0/deps/rabbitmq_management/priv/www/api/index.html
+  - type: Authentication
+    url: https://www.rabbitmq.com/management.html#permissions
 common:
   - type: AgenticAccess
     url: agentic-access/rabbitmq-agentic-access.yml
