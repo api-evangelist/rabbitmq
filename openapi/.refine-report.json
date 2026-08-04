@@ -1,0 +1,38 @@
+{
+  "provider": "rabbitmq",
+  "sources": [
+    "rabbitmq-bindings-api-openapi.yml",
+    "rabbitmq-channels-api-openapi.yml",
+    "rabbitmq-connections-api-openapi.yml",
+    "rabbitmq-definitions-api-openapi.yml",
+    "rabbitmq-exchanges-api-openapi.yml",
+    "rabbitmq-health-api-openapi.yml",
+    "rabbitmq-nodes-api-openapi.yml",
+    "rabbitmq-overview-api-openapi.yml",
+    "rabbitmq-permissions-api-openapi.yml",
+    "rabbitmq-policies-api-openapi.yml",
+    "rabbitmq-queues-api-openapi.yml",
+    "rabbitmq-users-api-openapi.yml",
+    "rabbitmq-virtual-hosts-api-openapi.yml"
+  ],
+  "outputs": [
+    "rabbitmq-bindings-api-openapi.yml",
+    "rabbitmq-channels-api-openapi.yml",
+    "rabbitmq-connections-api-openapi.yml",
+    "rabbitmq-definitions-api-openapi.yml",
+    "rabbitmq-exchanges-api-openapi.yml",
+    "rabbitmq-health-api-openapi.yml",
+    "rabbitmq-nodes-api-openapi.yml",
+    "rabbitmq-overview-api-openapi.yml",
+    "rabbitmq-permissions-api-openapi.yml",
+    "rabbitmq-policies-api-openapi.yml",
+    "rabbitmq-queues-api-openapi.yml",
+    "rabbitmq-users-api-openapi.yml",
+    "rabbitmq-virtual-hosts-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
