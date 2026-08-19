@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "RabbitMQ Management HTTP Bindings Connections API",
+    "version": "3.13.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Connections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:15672/api/connections"
+          },
+          "docs": "List connections"
+        },
+        {
+          "info": {
+            "name": "Get connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:15672/api/connections/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get connection"
+        },
+        {
+          "info": {
+            "name": "Close connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:15672/api/connections/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Close connection"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

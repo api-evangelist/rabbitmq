@@ -1,0 +1,391 @@
+{
+  "item": [
+    {
+      "id": "8c982e6f-04d1-462b-ba2b-f8089d94eb2d",
+      "name": "Bindings",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3b1c34bd-c2d4-4ea5-a3ad-9c70538ad40d",
+          "name": "List all bindings",
+          "request": {
+            "name": "List all bindings",
+            "description": {},
+            "url": {
+              "path": [
+                "bindings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "63dc4e47-8c37-40e5-85db-c8b9efd07c39",
+              "name": "List of bindings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bindings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"source\": \"string\",\n    \"vhost\": \"string\",\n    \"destination\": \"string\",\n    \"destination_type\": \"exchange\",\n    \"routing_key\": \"string\",\n    \"arguments\": {},\n    \"properties_key\": \"string\"\n  },\n  {\n    \"source\": \"string\",\n    \"vhost\": \"string\",\n    \"destination\": \"string\",\n    \"destination_type\": \"exchange\",\n    \"routing_key\": \"string\",\n    \"arguments\": {},\n    \"properties_key\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c6d1b4b-faa3-43fc-809b-2c480bf2ab4f",
+          "name": "List bindings between exchange and queue",
+          "request": {
+            "name": "List bindings between exchange and queue",
+            "description": {},
+            "url": {
+              "path": [
+                "bindings",
+                ":vhost",
+                "e",
+                ":exchange",
+                "q",
+                ":queue"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vhost",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "exchange",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "queue",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b34fad80-6ec4-48a6-9069-79b3e641ca41",
+              "name": "List of bindings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bindings",
+                    ":vhost",
+                    "e",
+                    ":exchange",
+                    "q",
+                    ":queue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vhost",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "queue",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"source\": \"string\",\n    \"vhost\": \"string\",\n    \"destination\": \"string\",\n    \"destination_type\": \"exchange\",\n    \"routing_key\": \"string\",\n    \"arguments\": {},\n    \"properties_key\": \"string\"\n  },\n  {\n    \"source\": \"string\",\n    \"vhost\": \"string\",\n    \"destination\": \"string\",\n    \"destination_type\": \"exchange\",\n    \"routing_key\": \"string\",\n    \"arguments\": {},\n    \"properties_key\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0db963f-0bd8-4406-90f6-2d0cf3b1adf0",
+          "name": "Create binding",
+          "request": {
+            "name": "Create binding",
+            "description": {},
+            "url": {
+              "path": [
+                "bindings",
+                ":vhost",
+                "e",
+                ":exchange",
+                "q",
+                ":queue"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vhost",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "exchange",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "queue",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"routing_key\": \"<string>\",\n  \"arguments\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b5ad36d4-172e-4eec-ae71-86ec7d399969",
+              "name": "Binding created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bindings",
+                    ":vhost",
+                    "e",
+                    ":exchange",
+                    "q",
+                    ":queue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vhost",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "queue",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"routing_key\": \"<string>\",\n  \"arguments\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:15672/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "952e9e9f-8aac-43ad-9c75-b268158971ec",
+    "name": "RabbitMQ Management HTTP Bindings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The RabbitMQ Management Plugin provides an HTTP-based API for management and monitoring of RabbitMQ nodes and clusters. It allows management of exchanges, queues, bindings, virtual hosts, users, permissions, policies, and more.\n\nContact Support:\n Name: RabbitMQ",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "item": [
+    {
+      "id": "abe7e7d7-f8f8-4cc4-8a62-ecda27acfc85",
+      "name": "Definitions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d5d8569d-6545-4c1e-bfb7-92e428aef68a",
+          "name": "Export definitions",
+          "request": {
+            "name": "Export definitions",
+            "description": {},
+            "url": {
+              "path": [
+                "definitions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "94b676fb-da36-4319-8dac-d491fd2d90d4",
+              "name": "Server definitions (users, vhosts, permissions, queues, exchanges, bindings, policies)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "definitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rabbit_version\": \"string\",\n  \"users\": [\n    {\n      \"name\": \"string\",\n      \"tags\": \"string\",\n      \"password_hash\": \"string\",\n      \"hashing_algorithm\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"tags\": \"string\",\n      \"password_hash\": \"string\",\n      \"hashing_algorithm\": \"string\"\n    }\n  ],\n  \"vhosts\": [\n    {\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"tracing\": false,\n      \"messages\": 4748,\n      \"messages_ready\": 446,\n      \"messages_unacknowledged\": 8394\n    },\n    {\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"tracing\": false,\n      \"messages\": 6050,\n      \"messages_ready\": 992,\n      \"messages_unacknowledged\": 6004\n    }\n  ],\n  \"permissions\": [\n    {\n      \"user\": \"string\",\n      \"vhost\": \"string\",\n      \"configure\": \"string\",\n      \"write\": \"string\",\n      \"read\": \"string\"\n    },\n    {\n      \"user\": \"string\",\n      \"vhost\": \"string\",\n      \"configure\": \"string\",\n      \"write\": \"string\",\n      \"read\": \"string\"\n    }\n  ],\n  \"queues\": [\n    {\n      \"name\": \"string\",\n      \"vhost\": \"string\",\n      \"durable\": false,\n      \"auto_delete\": false,\n      \"exclusive\": false,\n      \"arguments\": {},\n      \"node\": \"string\",\n      \"state\": \"string\",\n      \"type\": \"classic\",\n      \"messages\": 6212,\n      \"messages_ready\": 8538,\n      \"messages_unacknowledged\": 5841,\n      \"consumers\": 8272\n    },\n    {\n      \"name\": \"string\",\n      \"vhost\": \"string\",\n      \"durable\": false,\n      \"auto_delete\": false,\n      \"exclusive\": false,\n      \"arguments\": {},\n      \"node\": \"string\",\n      \"state\": \"string\",\n      \"type\": \"classic\",\n      \"messages\": 5613,\n      \"messages_ready\": 1146,\n      \"messages_unacknowledged\": 3746,\n      \"consumers\": 5148\n    }\n  ],\n  \"exchanges\": [\n    {\n      \"name\": \"string\",\n      \"vhost\": \"string\",\n      \"type\": \"topic\",\n      \"durable\": false,\n      \"auto_delete\": true,\n      \"internal\": false,\n      \"arguments\": {}\n    },\n    {\n      \"name\": \"string\",\n      \"vhost\": \"string\",\n      \"type\": \"x-consistent-hash\",\n      \"durable\": false,\n      \"auto_delete\": true,\n      \"internal\": false,\n      \"arguments\": {}\n    }\n  ],\n  \"bindings\": [\n    {\n      \"source\": \"string\",\n      \"vhost\": \"string\",\n      \"destination\": \"string\",\n      \"destination_type\": \"queue\",\n      \"routing_key\": \"string\",\n      \"arguments\": {},\n      \"properties_key\": \"string\"\n    },\n    {\n      \"source\": \"string\",\n      \"vhost\": \"string\",\n      \"destination\": \"string\",\n      \"destination_type\": \"queue\",\n      \"routing_key\": \"string\",\n      \"arguments\": {},\n      \"properties_key\": \"string\"\n    }\n  ],\n  \"policies\": [\n    {\n      \"vhost\": \"string\",\n      \"name\": \"string\",\n      \"pattern\": \"string\",\n      \"apply-to\": \"streams\",\n      \"priority\": 1922,\n      \"definition\": {}\n    },\n    {\n      \"vhost\": \"string\",\n      \"name\": \"string\",\n      \"pattern\": \"string\",\n      \"apply-to\": \"exchanges\",\n      \"priority\": 2803,\n      \"definition\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "495ba4da-bd01-45d6-8a1c-f4496350d64b",
+          "name": "Import definitions",
+          "request": {
+            "name": "Import definitions",
+            "description": {},
+            "url": {
+              "path": [
+                "definitions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rabbit_version\": \"<string>\",\n  \"users\": [\n    {\n      \"name\": \"<string>\",\n      \"tags\": \"<string>\",\n      \"password_hash\": \"<string>\",\n      \"hashing_algorithm\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"tags\": \"<string>\",\n      \"password_hash\": \"<string>\",\n      \"hashing_algorithm\": \"<string>\"\n    }\n  ],\n  \"vhosts\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"tracing\": \"<boolean>\",\n      \"messages\": \"<integer>\",\n      \"messages_ready\": \"<integer>\",\n      \"messages_unacknowledged\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"tracing\": \"<boolean>\",\n      \"messages\": \"<integer>\",\n      \"messages_ready\": \"<integer>\",\n      \"messages_unacknowledged\": \"<integer>\"\n    }\n  ],\n  \"permissions\": [\n    {\n      \"user\": \"<string>\",\n      \"vhost\": \"<string>\",\n      \"configure\": \"<string>\",\n      \"write\": \"<string>\",\n      \"read\": \"<string>\"\n    },\n    {\n      \"user\": \"<string>\",\n      \"vhost\": \"<string>\",\n      \"configure\": \"<string>\",\n      \"write\": \"<string>\",\n      \"read\": \"<string>\"\n    }\n  ],\n  \"queues\": [\n    {\n      \"name\": \"<string>\",\n      \"vhost\": \"<string>\",\n      \"durable\": \"<boolean>\",\n      \"auto_delete\": \"<boolean>\",\n      \"exclusive\": \"<boolean>\",\n      \"arguments\": \"<object>\",\n      \"node\": \"<string>\",\n      \"state\": \"<string>\",\n      \"type\": \"<string>\",\n      \"messages\": \"<integer>\",\n      \"messages_ready\": \"<integer>\",\n      \"messages_unacknowledged\": \"<integer>\",\n      \"consumers\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"vhost\": \"<string>\",\n      \"durable\": \"<boolean>\",\n      \"auto_delete\": \"<boolean>\",\n      \"exclusive\": \"<boolean>\",\n      \"arguments\": \"<object>\",\n      \"node\": \"<string>\",\n      \"state\": \"<string>\",\n      \"type\": \"<string>\",\n      \"messages\": \"<integer>\",\n      \"messages_ready\": \"<integer>\",\n      \"messages_unacknowledged\": \"<integer>\",\n      \"consumers\": \"<integer>\"\n    }\n  ],\n  \"exchanges\": [\n    {\n      \"name\": \"<string>\",\n      \"vhost\": \"<string>\",\n      \"type\": \"<string>\",\n      \"durable\": \"<boolean>\",\n      \"auto_delete\": \"<boolean>\",\n      \"internal\": \"<boolean>\",\n      \"arguments\": \"<object>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"vhost\": \"<string>\",\n      \"type\": \"<string>\",\n      \"durable\": \"<boolean>\",\n      \"auto_delete\": \"<boolean>\",\n      \"internal\": \"<boolean>\",\n      \"arguments\": \"<object>\"\n    }\n  ],\n  \"bindings\": [\n    {\n      \"source\": \"<string>\",\n      \"vhost\": \"<string>\",\n      \"destination\": \"<string>\",\n      \"destination_type\": \"<string>\",\n      \"routing_key\": \"<string>\",\n      \"arguments\": \"<object>\",\n      \"properties_key\": \"<string>\"\n    },\n    {\n      \"source\": \"<string>\",\n      \"vhost\": \"<string>\",\n      \"destination\": \"<string>\",\n      \"destination_type\": \"<string>\",\n      \"routing_key\": \"<string>\",\n      \"arguments\": \"<object>\",\n      \"properties_key\": \"<string>\"\n    }\n  ],\n  \"policies\": [\n    {\n      \"vhost\": \"<string>\",\n      \"name\": \"<string>\",\n      \"pattern\": \"<string>\",\n      \"apply-to\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"definition\": \"<object>\"\n    },\n    {\n      \"vhost\": \"<string>\",\n      \"name\": \"<string>\",\n      \"pattern\": \"<string>\",\n      \"apply-to\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"definition\": \"<object>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "13299b00-f35c-4831-adb0-1911a86e39e3",
+              "name": "Definitions imported",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "definitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"rabbit_version\": \"<string>\",\n  \"users\": [\n    {\n      \"name\": \"string\",\n      \"tags\": \"string\",\n      \"password_hash\": \"string\",\n      \"hashing_algorithm\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"tags\": \"string\",\n      \"password_hash\": \"string\",\n      \"hashing_algorithm\": \"string\"\n    }\n  ],\n  \"vhosts\": [\n    {\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"tracing\": false,\n      \"messages\": 2191,\n      \"messages_ready\": 9688,\n      \"messages_unacknowledged\": 1190\n    },\n    {\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"tracing\": false,\n      \"messages\": 8049,\n      \"messages_ready\": 6357,\n      \"messages_unacknowledged\": 76\n    }\n  ],\n  \"permissions\": [\n    {\n      \"user\": \"string\",\n      \"vhost\": \"string\",\n      \"configure\": \"string\",\n      \"write\": \"string\",\n      \"read\": \"string\"\n    },\n    {\n      \"user\": \"string\",\n      \"vhost\": \"string\",\n      \"configure\": \"string\",\n      \"write\": \"string\",\n      \"read\": \"string\"\n    }\n  ],\n  \"queues\": [\n    {\n      \"name\": \"string\",\n      \"vhost\": \"string\",\n      \"durable\": true,\n      \"auto_delete\": true,\n      \"exclusive\": false,\n      \"arguments\": {},\n      \"node\": \"string\",\n      \"state\": \"string\",\n      \"type\": \"stream\",\n      \"messages\": 2416,\n      \"messages_ready\": 9326,\n      \"messages_unacknowledged\": 6967,\n      \"consumers\": 1925\n    },\n    {\n      \"name\": \"string\",\n      \"vhost\": \"string\",\n      \"durable\": true,\n      \"auto_delete\": false,\n      \"exclusive\": true,\n      \"arguments\": {},\n      \"node\": \"string\",\n      \"state\": \"string\",\n      \"type\": \"quorum\",\n      \"messages\": 3094,\n      \"messages_ready\": 1022,\n      \"messages_unacknowledged\": 5911,\n      \"consumers\": 6694\n    }\n  ],\n  \"exchanges\": [\n    {\n      \"name\": \"string\",\n      \"vhost\": \"string\",\n      \"type\": \"fanout\",\n      \"durable\": false,\n      \"auto_delete\": false,\n      \"internal\": true,\n      \"arguments\": {}\n    },\n    {\n      \"name\": \"string\",\n      \"vhost\": \"string\",\n      \"type\": \"fanout\",\n      \"durable\": false,\n      \"auto_delete\": true,\n      \"internal\": true,\n      \"arguments\": {}\n    }\n  ],\n  \"bindings\": [\n    {\n      \"source\": \"string\",\n      \"vhost\": \"string\",\n      \"destination\": \"string\",\n      \"destination_type\": \"exchange\",\n      \"routing_key\": \"string\",\n      \"arguments\": {},\n      \"properties_key\": \"string\"\n    },\n    {\n      \"source\": \"string\",\n      \"vhost\": \"string\",\n      \"destination\": \"string\",\n      \"destination_type\": \"exchange\",\n      \"routing_key\": \"string\",\n      \"arguments\": {},\n      \"properties_key\": \"string\"\n    }\n  ],\n  \"policies\": [\n    {\n      \"vhost\": \"string\",\n      \"name\": \"string\",\n      \"pattern\": \"string\",\n      \"apply-to\": \"quorum_queues\",\n      \"priority\": 3188,\n      \"definition\": {}\n    },\n    {\n      \"vhost\": \"string\",\n      \"name\": \"string\",\n      \"pattern\": \"string\",\n      \"apply-to\": \"quorum_queues\",\n      \"priority\": 7921,\n      \"definition\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:15672/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c75df965-e3e4-476f-8ff9-78e447b8d989",
+    "name": "RabbitMQ Management HTTP Bindings Definitions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The RabbitMQ Management Plugin provides an HTTP-based API for management and monitoring of RabbitMQ nodes and clusters. It allows management of exchanges, queues, bindings, virtual hosts, users, permissions, policies, and more.\n\nContact Support:\n Name: RabbitMQ",
+      "type": "text/plain"
+    }
+  }
+}

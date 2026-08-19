@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "RabbitMQ Management HTTP Bindings Users API",
+    "version": "3.13.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:15672/api/users"
+          },
+          "docs": "List users"
+        },
+        {
+          "info": {
+            "name": "Get user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:15672/api/users/:user",
+            "params": [
+              {
+                "name": "user",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get user"
+        },
+        {
+          "info": {
+            "name": "Create or update user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:15672/api/users/:user",
+            "params": [
+              {
+                "name": "user",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update user"
+        },
+        {
+          "info": {
+            "name": "Delete user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:15672/api/users/:user",
+            "params": [
+              {
+                "name": "user",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete user"
+        },
+        {
+          "info": {
+            "name": "Get current user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:15672/api/whoami"
+          },
+          "docs": "Get current user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "RabbitMQ Management HTTP Bindings Health API",
+    "version": "3.13.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Health check - alarms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:15672/api/health/checks/alarms"
+          },
+          "docs": "Health check - alarms"
+        },
+        {
+          "info": {
+            "name": "Health check - local alarms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:15672/api/health/checks/local-alarms"
+          },
+          "docs": "Health check - local alarms"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

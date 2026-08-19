@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "RabbitMQ Management HTTP Bindings Channels API",
+    "version": "3.13.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Channels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List channels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:15672/api/channels"
+          },
+          "docs": "List channels"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "RabbitMQ Management HTTP Bindings Definitions API",
+    "version": "3.13.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Definitions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Export definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:15672/api/definitions"
+          },
+          "docs": "Export definitions"
+        },
+        {
+          "info": {
+            "name": "Import definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:15672/api/definitions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Import definitions"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

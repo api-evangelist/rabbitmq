@@ -1,0 +1,159 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "RabbitMQ Management HTTP Bindings Exchanges API",
+    "version": "3.13.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Exchanges",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all exchanges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:15672/api/exchanges"
+          },
+          "docs": "List all exchanges"
+        },
+        {
+          "info": {
+            "name": "List exchanges in a virtual host",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:15672/api/exchanges/:vhost",
+            "params": [
+              {
+                "name": "vhost",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List exchanges in a virtual host"
+        },
+        {
+          "info": {
+            "name": "Get exchange",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:15672/api/exchanges/:vhost/:exchange",
+            "params": [
+              {
+                "name": "vhost",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "exchange",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get exchange"
+        },
+        {
+          "info": {
+            "name": "Create exchange",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:15672/api/exchanges/:vhost/:exchange",
+            "params": [
+              {
+                "name": "vhost",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "exchange",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create exchange"
+        },
+        {
+          "info": {
+            "name": "Delete exchange",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:15672/api/exchanges/:vhost/:exchange",
+            "params": [
+              {
+                "name": "vhost",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "exchange",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "if-unused",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete exchange"
+        },
+        {
+          "info": {
+            "name": "Publish message to exchange",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:15672/api/exchanges/:vhost/:exchange/publish",
+            "params": [
+              {
+                "name": "vhost",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "exchange",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Publish message to exchange"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,860 @@
+{
+  "item": [
+    {
+      "id": "c5982451-6cd4-4cff-9e82-7fa07dee88bf",
+      "name": "Queues",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "48513a92-147b-4866-afd1-e13525911c60",
+          "name": "List all queues",
+          "request": {
+            "name": "List all queues",
+            "description": {},
+            "url": {
+              "path": [
+                "queues"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4507f504-c116-4884-9d0f-0c2666328973",
+              "name": "List of queues",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "queues"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"vhost\": \"string\",\n    \"durable\": false,\n    \"auto_delete\": false,\n    \"exclusive\": false,\n    \"arguments\": {},\n    \"node\": \"string\",\n    \"state\": \"string\",\n    \"type\": \"stream\",\n    \"messages\": 5285,\n    \"messages_ready\": 6579,\n    \"messages_unacknowledged\": 8072,\n    \"consumers\": 8148\n  },\n  {\n    \"name\": \"string\",\n    \"vhost\": \"string\",\n    \"durable\": true,\n    \"auto_delete\": false,\n    \"exclusive\": true,\n    \"arguments\": {},\n    \"node\": \"string\",\n    \"state\": \"string\",\n    \"type\": \"stream\",\n    \"messages\": 4048,\n    \"messages_ready\": 4981,\n    \"messages_unacknowledged\": 9727,\n    \"consumers\": 6967\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3255eaa3-3be1-4e10-bece-0978df04ee45",
+          "name": "List queues in virtual host",
+          "request": {
+            "name": "List queues in virtual host",
+            "description": {},
+            "url": {
+              "path": [
+                "queues",
+                ":vhost"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vhost",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3dac1f62-ad6d-47f1-93fd-b2c8dfe22f98",
+              "name": "List of queues",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "queues",
+                    ":vhost"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vhost",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"vhost\": \"string\",\n    \"durable\": false,\n    \"auto_delete\": false,\n    \"exclusive\": false,\n    \"arguments\": {},\n    \"node\": \"string\",\n    \"state\": \"string\",\n    \"type\": \"stream\",\n    \"messages\": 5285,\n    \"messages_ready\": 6579,\n    \"messages_unacknowledged\": 8072,\n    \"consumers\": 8148\n  },\n  {\n    \"name\": \"string\",\n    \"vhost\": \"string\",\n    \"durable\": true,\n    \"auto_delete\": false,\n    \"exclusive\": true,\n    \"arguments\": {},\n    \"node\": \"string\",\n    \"state\": \"string\",\n    \"type\": \"stream\",\n    \"messages\": 4048,\n    \"messages_ready\": 4981,\n    \"messages_unacknowledged\": 9727,\n    \"consumers\": 6967\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d58644e6-f742-42e2-802b-10db5cc03c86",
+          "name": "Get queue",
+          "request": {
+            "name": "Get queue",
+            "description": {},
+            "url": {
+              "path": [
+                "queues",
+                ":vhost",
+                ":queue"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vhost",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "queue",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "69645f14-acac-40fe-bb53-f859d0c4250f",
+              "name": "Queue details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "queues",
+                    ":vhost",
+                    ":queue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vhost",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "queue",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"vhost\": \"string\",\n  \"durable\": false,\n  \"auto_delete\": false,\n  \"exclusive\": true,\n  \"arguments\": {},\n  \"node\": \"string\",\n  \"state\": \"string\",\n  \"type\": \"quorum\",\n  \"messages\": 8452,\n  \"messages_ready\": 630,\n  \"messages_unacknowledged\": 8425,\n  \"consumers\": 6301\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7ef52c8-4b01-4bc6-b14e-f17234da1bfd",
+          "name": "Create queue",
+          "request": {
+            "name": "Create queue",
+            "description": {},
+            "url": {
+              "path": [
+                "queues",
+                ":vhost",
+                ":queue"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vhost",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "queue",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"durable\": true,\n  \"auto_delete\": false,\n  \"arguments\": {\n    \"x-queue-type\": \"<string>\",\n    \"x-max-length\": \"<integer>\",\n    \"x-message-ttl\": \"<integer>\",\n    \"x-dead-letter-exchange\": \"<string>\",\n    \"x-dead-letter-routing-key\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "af61ac1d-e126-46b8-be86-6091b20bc6a1",
+              "name": "Queue created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "queues",
+                    ":vhost",
+                    ":queue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vhost",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "queue",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"durable\": true,\n  \"auto_delete\": false,\n  \"arguments\": {\n    \"x-queue-type\": \"<string>\",\n    \"x-max-length\": \"<integer>\",\n    \"x-message-ttl\": \"<integer>\",\n    \"x-dead-letter-exchange\": \"<string>\",\n    \"x-dead-letter-routing-key\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e89baf71-1171-49b8-9a98-f09826195c48",
+              "name": "Queue updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "queues",
+                    ":vhost",
+                    ":queue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vhost",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "queue",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"durable\": true,\n  \"auto_delete\": false,\n  \"arguments\": {\n    \"x-queue-type\": \"<string>\",\n    \"x-max-length\": \"<integer>\",\n    \"x-message-ttl\": \"<integer>\",\n    \"x-dead-letter-exchange\": \"<string>\",\n    \"x-dead-letter-routing-key\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "832fbc00-052c-44b8-b447-7e537c19e9e5",
+          "name": "Delete queue",
+          "request": {
+            "name": "Delete queue",
+            "description": {},
+            "url": {
+              "path": [
+                "queues",
+                ":vhost",
+                ":queue"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "if-empty",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "if-unused",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vhost",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "queue",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "211117ee-2708-4ec2-b0ba-9d4cc5c3dc01",
+              "name": "Queue deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "queues",
+                    ":vhost",
+                    ":queue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "if-empty",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "if-unused",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vhost",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "queue",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f9d2cac-24a4-4f05-93ee-82ab307ceee1",
+          "name": "Get messages from queue",
+          "request": {
+            "name": "Get messages from queue",
+            "description": {},
+            "url": {
+              "path": [
+                "queues",
+                ":vhost",
+                ":queue",
+                "get"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vhost",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "queue",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"count\": \"<integer>\",\n  \"ackmode\": \"<string>\",\n  \"encoding\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3c1720be-6318-4758-bca2-65b2f2a3b855",
+              "name": "Messages from queue",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "queues",
+                    ":vhost",
+                    ":queue",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vhost",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "queue",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"count\": \"<integer>\",\n  \"ackmode\": \"<string>\",\n  \"encoding\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"payload\": \"string\",\n    \"payload_bytes\": 4264,\n    \"payload_encoding\": \"string\",\n    \"redelivered\": true,\n    \"exchange\": \"string\",\n    \"routing_key\": \"string\",\n    \"message_count\": 6601,\n    \"properties\": {\n      \"content_type\": \"string\",\n      \"delivery_mode\": 4150,\n      \"headers\": {},\n      \"priority\": 7834,\n      \"correlation_id\": \"string\",\n      \"reply_to\": \"string\",\n      \"expiration\": \"string\",\n      \"message_id\": \"string\",\n      \"timestamp\": 3953,\n      \"type\": \"string\",\n      \"app_id\": \"string\"\n    }\n  },\n  {\n    \"payload\": \"string\",\n    \"payload_bytes\": 1796,\n    \"payload_encoding\": \"string\",\n    \"redelivered\": false,\n    \"exchange\": \"string\",\n    \"routing_key\": \"string\",\n    \"message_count\": 3580,\n    \"properties\": {\n      \"content_type\": \"string\",\n      \"delivery_mode\": 9663,\n      \"headers\": {},\n      \"priority\": 9175,\n      \"correlation_id\": \"string\",\n      \"reply_to\": \"string\",\n      \"expiration\": \"string\",\n      \"message_id\": \"string\",\n      \"timestamp\": 6955,\n      \"type\": \"string\",\n      \"app_id\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c1a444d3-5cb3-430d-909a-8d499c92bbd9",
+          "name": "Purge queue",
+          "request": {
+            "name": "Purge queue",
+            "description": {},
+            "url": {
+              "path": [
+                "queues",
+                ":vhost",
+                ":queue",
+                "purge"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vhost",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "queue",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e002a619-cc47-4edf-918b-0735a4ced2f0",
+              "name": "Queue purged",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "queues",
+                    ":vhost",
+                    ":queue",
+                    "purge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vhost",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "queue",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:15672/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b41a8f66-dc69-4429-92bf-60df3327f374",
+    "name": "RabbitMQ Management HTTP Bindings Queues API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The RabbitMQ Management Plugin provides an HTTP-based API for management and monitoring of RabbitMQ nodes and clusters. It allows management of exchanges, queues, bindings, virtual hosts, users, permissions, policies, and more.\n\nContact Support:\n Name: RabbitMQ",
+      "type": "text/plain"
+    }
+  }
+}

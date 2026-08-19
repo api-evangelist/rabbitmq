@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "RabbitMQ Management HTTP Bindings Permissions API",
+    "version": "3.13.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Permissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get user permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:15672/api/permissions/:vhost/:user",
+            "params": [
+              {
+                "name": "vhost",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get user permissions"
+        },
+        {
+          "info": {
+            "name": "Set user permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:15672/api/permissions/:vhost/:user",
+            "params": [
+              {
+                "name": "vhost",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set user permissions"
+        },
+        {
+          "info": {
+            "name": "Delete user permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:15672/api/permissions/:vhost/:user",
+            "params": [
+              {
+                "name": "vhost",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete user permissions"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

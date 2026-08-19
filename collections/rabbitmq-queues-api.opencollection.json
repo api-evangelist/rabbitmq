@@ -1,0 +1,187 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "RabbitMQ Management HTTP Bindings Queues API",
+    "version": "3.13.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Queues",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all queues",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:15672/api/queues"
+          },
+          "docs": "List all queues"
+        },
+        {
+          "info": {
+            "name": "List queues in virtual host",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:15672/api/queues/:vhost",
+            "params": [
+              {
+                "name": "vhost",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List queues in virtual host"
+        },
+        {
+          "info": {
+            "name": "Get queue",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:15672/api/queues/:vhost/:queue",
+            "params": [
+              {
+                "name": "vhost",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "queue",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get queue"
+        },
+        {
+          "info": {
+            "name": "Create queue",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:15672/api/queues/:vhost/:queue",
+            "params": [
+              {
+                "name": "vhost",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "queue",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create queue"
+        },
+        {
+          "info": {
+            "name": "Delete queue",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:15672/api/queues/:vhost/:queue",
+            "params": [
+              {
+                "name": "vhost",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "queue",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "if-empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "if-unused",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete queue"
+        },
+        {
+          "info": {
+            "name": "Get messages from queue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:15672/api/queues/:vhost/:queue/get",
+            "params": [
+              {
+                "name": "vhost",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "queue",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get messages from queue"
+        },
+        {
+          "info": {
+            "name": "Purge queue",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:15672/api/queues/:vhost/:queue/purge",
+            "params": [
+              {
+                "name": "vhost",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "queue",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Purge queue"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

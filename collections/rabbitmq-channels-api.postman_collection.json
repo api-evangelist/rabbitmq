@@ -1,0 +1,120 @@
+{
+  "item": [
+    {
+      "id": "c0ccec32-1046-4996-bb44-4edcf9583793",
+      "name": "Channels",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "32a98873-eef3-4138-9f4a-578a07fd3851",
+          "name": "List channels",
+          "request": {
+            "name": "List channels",
+            "description": {},
+            "url": {
+              "path": [
+                "channels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6add2604-9635-4898-8216-d5ca396c7ec7",
+              "name": "List of channels",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"node\": \"string\",\n    \"connection_details\": {},\n    \"number\": 8642,\n    \"user\": \"string\",\n    \"vhost\": \"string\",\n    \"state\": \"string\",\n    \"consumer_count\": 5868,\n    \"messages_unacknowledged\": 940,\n    \"prefetch_count\": 7957\n  },\n  {\n    \"name\": \"string\",\n    \"node\": \"string\",\n    \"connection_details\": {},\n    \"number\": 5978,\n    \"user\": \"string\",\n    \"vhost\": \"string\",\n    \"state\": \"string\",\n    \"consumer_count\": 5875,\n    \"messages_unacknowledged\": 8807,\n    \"prefetch_count\": 3748\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:15672/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5e3209ad-5404-47a1-aca6-ebeefc2854d5",
+    "name": "RabbitMQ Management HTTP Bindings Channels API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The RabbitMQ Management Plugin provides an HTTP-based API for management and monitoring of RabbitMQ nodes and clusters. It allows management of exchanges, queues, bindings, virtual hosts, users, permissions, policies, and more.\n\nContact Support:\n Name: RabbitMQ",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "RabbitMQ Management HTTP Bindings Policies API",
+    "version": "3.13.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Policies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List policies in vhost",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:15672/api/policies/:vhost",
+            "params": [
+              {
+                "name": "vhost",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List policies in vhost"
+        },
+        {
+          "info": {
+            "name": "Get policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:15672/api/policies/:vhost/:policy",
+            "params": [
+              {
+                "name": "vhost",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "policy",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get policy"
+        },
+        {
+          "info": {
+            "name": "Create or update policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:15672/api/policies/:vhost/:policy",
+            "params": [
+              {
+                "name": "vhost",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "policy",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update policy"
+        },
+        {
+          "info": {
+            "name": "Delete policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:15672/api/policies/:vhost/:policy",
+            "params": [
+              {
+                "name": "vhost",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "policy",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete policy"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

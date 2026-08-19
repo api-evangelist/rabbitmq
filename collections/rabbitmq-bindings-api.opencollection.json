@@ -1,0 +1,96 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "RabbitMQ Management HTTP Bindings API",
+    "version": "3.13.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bindings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all bindings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:15672/api/bindings"
+          },
+          "docs": "List all bindings"
+        },
+        {
+          "info": {
+            "name": "List bindings between exchange and queue",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:15672/api/bindings/:vhost/e/:exchange/q/:queue",
+            "params": [
+              {
+                "name": "vhost",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "exchange",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "queue",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List bindings between exchange and queue"
+        },
+        {
+          "info": {
+            "name": "Create binding",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:15672/api/bindings/:vhost/e/:exchange/q/:queue",
+            "params": [
+              {
+                "name": "vhost",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "exchange",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "queue",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create binding"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

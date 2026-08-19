@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "RabbitMQ Management HTTP Bindings Virtual Hosts API",
+    "version": "3.13.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Virtual Hosts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List virtual hosts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:15672/api/vhosts"
+          },
+          "docs": "List virtual hosts"
+        },
+        {
+          "info": {
+            "name": "Get virtual host",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:15672/api/vhosts/:vhost",
+            "params": [
+              {
+                "name": "vhost",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get virtual host"
+        },
+        {
+          "info": {
+            "name": "Create virtual host",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:15672/api/vhosts/:vhost",
+            "params": [
+              {
+                "name": "vhost",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create virtual host"
+        },
+        {
+          "info": {
+            "name": "Delete virtual host",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:15672/api/vhosts/:vhost",
+            "params": [
+              {
+                "name": "vhost",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete virtual host"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

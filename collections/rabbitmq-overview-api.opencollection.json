@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "RabbitMQ Management HTTP Bindings Overview API",
+    "version": "3.13.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Overview",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get cluster overview",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:15672/api/overview"
+          },
+          "docs": "Get cluster overview"
+        },
+        {
+          "info": {
+            "name": "Get cluster name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:15672/api/cluster-name"
+          },
+          "docs": "Get cluster name"
+        },
+        {
+          "info": {
+            "name": "Set cluster name",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:15672/api/cluster-name",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set cluster name"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
