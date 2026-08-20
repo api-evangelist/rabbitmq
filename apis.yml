@@ -219,6 +219,8 @@ apis:
   humanURL: https://www.rabbitmq.com/management.html
   baseURL: http://localhost:15672/api
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
