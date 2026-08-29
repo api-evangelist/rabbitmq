@@ -4,6 +4,17 @@ description: >-
   RabbitMQ is a widely deployed open source message broker. It supports multiple messaging protocols and can be deployed
   in distributed and federated configurations to meet high-scale, high-availability requirements.
 type: Index
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
