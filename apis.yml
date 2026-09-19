@@ -38,8 +38,16 @@ tags:
   - Event Streaming
   - Message Broker
   - Messaging
+  - Queues
+tags_raw:
   - Queue
   - RabbitMQ
+  - AMQP
+  - Distributed Systems
+  - Event Streaming
+  - Message Broker
+  - Messaging
+  - Queue
 created: '2024-01-01'
 modified: '2026-05-19'
 specificationVersion: '0.23'
@@ -128,6 +136,8 @@ apis:
   humanURL: https://www.rabbitmq.com/management.html
   baseURL: http://localhost:15672/api
   tags:
+  - Exchange
+  tags_raw:
   - Exchanges
   properties:
   - type: OpenAPI
@@ -158,6 +168,8 @@ apis:
   humanURL: https://www.rabbitmq.com/management.html
   baseURL: http://localhost:15672/api
   tags:
+  - Node
+  tags_raw:
   - Nodes
   properties:
   - type: OpenAPI
