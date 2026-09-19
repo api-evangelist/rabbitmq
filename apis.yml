@@ -33,12 +33,13 @@ accessModel:
 image: https://www.rabbitmq.com/img/rabbitmq-logo.svg
 url: https://raw.githubusercontent.com/api-evangelist/rabbitmq/refs/heads/main/apis.yml
 tags:
+  - Queues
+  - RabbitMQ
   - AMQP
   - Distributed Systems
   - Event Streaming
   - Message Broker
   - Messaging
-  - Queues
 tags_raw:
   - Queue
   - RabbitMQ
