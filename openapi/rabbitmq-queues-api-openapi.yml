@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: RabbitMQ Management HTTP Bindings Queues API
+  title: RabbitMQ Management HTTP Queues API
   description: The RabbitMQ Management Plugin provides an HTTP-based API for management and monitoring of RabbitMQ nodes and clusters. It allows management of exchanges, queues, bindings, virtual hosts, users, permissions, policies, and more.
   version: 3.13.0
   contact:
@@ -233,32 +233,6 @@ components:
           type: integer
         consumers:
           type: integer
-    QueueCreate:
-      type: object
-      properties:
-        durable:
-          type: boolean
-          default: true
-        auto_delete:
-          type: boolean
-          default: false
-        arguments:
-          type: object
-          properties:
-            x-queue-type:
-              type: string
-              enum:
-              - classic
-              - quorum
-              - stream
-            x-max-length:
-              type: integer
-            x-message-ttl:
-              type: integer
-            x-dead-letter-exchange:
-              type: string
-            x-dead-letter-routing-key:
-              type: string
     Message:
       type: object
       properties:
@@ -300,6 +274,32 @@ components:
             type:
               type: string
             app_id:
+              type: string
+    QueueCreate:
+      type: object
+      properties:
+        durable:
+          type: boolean
+          default: true
+        auto_delete:
+          type: boolean
+          default: false
+        arguments:
+          type: object
+          properties:
+            x-queue-type:
+              type: string
+              enum:
+              - classic
+              - quorum
+              - stream
+            x-max-length:
+              type: integer
+            x-message-ttl:
+              type: integer
+            x-dead-letter-exchange:
+              type: string
+            x-dead-letter-routing-key:
               type: string
   securitySchemes:
     basicAuth:

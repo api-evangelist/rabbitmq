@@ -1,19 +1,7 @@
 {
   "provider": "rabbitmq",
   "sources": [
-    "rabbitmq-bindings-api-openapi.yml",
-    "rabbitmq-channels-api-openapi.yml",
-    "rabbitmq-connections-api-openapi.yml",
-    "rabbitmq-definitions-api-openapi.yml",
-    "rabbitmq-exchanges-api-openapi.yml",
-    "rabbitmq-health-api-openapi.yml",
-    "rabbitmq-nodes-api-openapi.yml",
-    "rabbitmq-overview-api-openapi.yml",
-    "rabbitmq-permissions-api-openapi.yml",
-    "rabbitmq-policies-api-openapi.yml",
-    "rabbitmq-queues-api-openapi.yml",
-    "rabbitmq-users-api-openapi.yml",
-    "rabbitmq-virtual-hosts-api-openapi.yml"
+    "_original/rabbitmq-management.yml"
   ],
   "outputs": [
     "rabbitmq-bindings-api-openapi.yml",
@@ -33,6 +21,37 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "rabbitmq-management.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "rabbitmq-management.yml: declared missing tag: Bindings",
+    "rabbitmq-management.yml: declared missing tag: Channels",
+    "rabbitmq-management.yml: declared missing tag: Connections",
+    "rabbitmq-management.yml: declared missing tag: Definitions",
+    "rabbitmq-management.yml: declared missing tag: Exchanges",
+    "rabbitmq-management.yml: declared missing tag: Health",
+    "rabbitmq-management.yml: declared missing tag: Nodes",
+    "rabbitmq-management.yml: declared missing tag: Overview",
+    "rabbitmq-management.yml: declared missing tag: Permissions",
+    "rabbitmq-management.yml: declared missing tag: Policies",
+    "rabbitmq-management.yml: declared missing tag: Queues",
+    "rabbitmq-management.yml: declared missing tag: Users",
+    "rabbitmq-management.yml: declared missing tag: Virtual Hosts",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "rabbitmq-bindings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rabbitmq-channels-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rabbitmq-connections-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rabbitmq-definitions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rabbitmq-exchanges-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rabbitmq-health-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rabbitmq-nodes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rabbitmq-overview-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rabbitmq-permissions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rabbitmq-policies-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rabbitmq-queues-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rabbitmq-users-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rabbitmq-virtual-hosts-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

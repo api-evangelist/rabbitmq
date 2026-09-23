@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: RabbitMQ Management HTTP Bindings Exchanges API
+  title: RabbitMQ Management HTTP Exchanges API
   description: The RabbitMQ Management Plugin provides an HTTP-based API for management and monitoring of RabbitMQ nodes and clusters. It allows management of exchanges, queues, bindings, virtual hosts, users, permissions, policies, and more.
   version: 3.13.0
   contact:
@@ -162,6 +162,30 @@ paths:
                     type: boolean
 components:
   schemas:
+    Exchange:
+      type: object
+      properties:
+        name:
+          type: string
+        vhost:
+          type: string
+        type:
+          type: string
+          enum:
+          - direct
+          - fanout
+          - topic
+          - headers
+          - x-consistent-hash
+          - x-modulus-hash
+        durable:
+          type: boolean
+        auto_delete:
+          type: boolean
+        internal:
+          type: boolean
+        arguments:
+          type: object
     ExchangeCreate:
       type: object
       properties:
@@ -211,30 +235,6 @@ components:
               type: object
             content_type:
               type: string
-    Exchange:
-      type: object
-      properties:
-        name:
-          type: string
-        vhost:
-          type: string
-        type:
-          type: string
-          enum:
-          - direct
-          - fanout
-          - topic
-          - headers
-          - x-consistent-hash
-          - x-modulus-hash
-        durable:
-          type: boolean
-        auto_delete:
-          type: boolean
-        internal:
-          type: boolean
-        arguments:
-          type: object
   securitySchemes:
     basicAuth:
       type: http
