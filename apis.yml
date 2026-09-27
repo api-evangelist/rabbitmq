@@ -40,6 +40,7 @@ tags:
   - Event Streaming
   - Message Broker
   - Messaging
+  - Real-Time
 tags_raw:
   - Queue
   - RabbitMQ
@@ -49,6 +50,7 @@ tags_raw:
   - Message Broker
   - Messaging
   - Queue
+  - Real-Time
 created: '2024-01-01'
 modified: '2026-05-19'
 specificationVersion: '0.23'

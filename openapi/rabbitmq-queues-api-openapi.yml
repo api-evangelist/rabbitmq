@@ -200,6 +200,32 @@ paths:
           description: Queue purged
 components:
   schemas:
+    QueueCreate:
+      type: object
+      properties:
+        durable:
+          type: boolean
+          default: true
+        auto_delete:
+          type: boolean
+          default: false
+        arguments:
+          type: object
+          properties:
+            x-queue-type:
+              type: string
+              enum:
+              - classic
+              - quorum
+              - stream
+            x-max-length:
+              type: integer
+            x-message-ttl:
+              type: integer
+            x-dead-letter-exchange:
+              type: string
+            x-dead-letter-routing-key:
+              type: string
     Queue:
       type: object
       properties:
@@ -274,32 +300,6 @@ components:
             type:
               type: string
             app_id:
-              type: string
-    QueueCreate:
-      type: object
-      properties:
-        durable:
-          type: boolean
-          default: true
-        auto_delete:
-          type: boolean
-          default: false
-        arguments:
-          type: object
-          properties:
-            x-queue-type:
-              type: string
-              enum:
-              - classic
-              - quorum
-              - stream
-            x-max-length:
-              type: integer
-            x-message-ttl:
-              type: integer
-            x-dead-letter-exchange:
-              type: string
-            x-dead-letter-routing-key:
               type: string
   securitySchemes:
     basicAuth:

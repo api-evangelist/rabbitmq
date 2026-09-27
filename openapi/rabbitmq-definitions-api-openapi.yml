@@ -79,6 +79,76 @@ components:
           type: integer
         consumers:
           type: integer
+    Permission:
+      type: object
+      properties:
+        user:
+          type: string
+        vhost:
+          type: string
+        configure:
+          type: string
+          description: Regex for configure permissions
+        write:
+          type: string
+          description: Regex for write permissions
+        read:
+          type: string
+          description: Regex for read permissions
+    Vhost:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        tracing:
+          type: boolean
+        messages:
+          type: integer
+        messages_ready:
+          type: integer
+        messages_unacknowledged:
+          type: integer
+    User:
+      type: object
+      properties:
+        name:
+          type: string
+        tags:
+          type: string
+        password_hash:
+          type: string
+        hashing_algorithm:
+          type: string
+    Exchange:
+      type: object
+      properties:
+        name:
+          type: string
+        vhost:
+          type: string
+        type:
+          type: string
+          enum:
+          - direct
+          - fanout
+          - topic
+          - headers
+          - x-consistent-hash
+          - x-modulus-hash
+        durable:
+          type: boolean
+        auto_delete:
+          type: boolean
+        internal:
+          type: boolean
+        arguments:
+          type: object
     Definitions:
       type: object
       properties:
@@ -112,22 +182,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Policy'
-    Permission:
-      type: object
-      properties:
-        user:
-          type: string
-        vhost:
-          type: string
-        configure:
-          type: string
-          description: Regex for configure permissions
-        write:
-          type: string
-          description: Regex for write permissions
-        read:
-          type: string
-          description: Regex for read permissions
     Policy:
       type: object
       properties:
@@ -169,60 +223,6 @@ components:
         arguments:
           type: object
         properties_key:
-          type: string
-    Exchange:
-      type: object
-      properties:
-        name:
-          type: string
-        vhost:
-          type: string
-        type:
-          type: string
-          enum:
-          - direct
-          - fanout
-          - topic
-          - headers
-          - x-consistent-hash
-          - x-modulus-hash
-        durable:
-          type: boolean
-        auto_delete:
-          type: boolean
-        internal:
-          type: boolean
-        arguments:
-          type: object
-    Vhost:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        tags:
-          type: array
-          items:
-            type: string
-        tracing:
-          type: boolean
-        messages:
-          type: integer
-        messages_ready:
-          type: integer
-        messages_unacknowledged:
-          type: integer
-    User:
-      type: object
-      properties:
-        name:
-          type: string
-        tags:
-          type: string
-        password_hash:
-          type: string
-        hashing_algorithm:
           type: string
   securitySchemes:
     basicAuth:

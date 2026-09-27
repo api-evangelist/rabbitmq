@@ -162,30 +162,6 @@ paths:
                     type: boolean
 components:
   schemas:
-    Exchange:
-      type: object
-      properties:
-        name:
-          type: string
-        vhost:
-          type: string
-        type:
-          type: string
-          enum:
-          - direct
-          - fanout
-          - topic
-          - headers
-          - x-consistent-hash
-          - x-modulus-hash
-        durable:
-          type: boolean
-        auto_delete:
-          type: boolean
-        internal:
-          type: boolean
-        arguments:
-          type: object
     ExchangeCreate:
       type: object
       properties:
@@ -235,6 +211,30 @@ components:
               type: object
             content_type:
               type: string
+    Exchange:
+      type: object
+      properties:
+        name:
+          type: string
+        vhost:
+          type: string
+        type:
+          type: string
+          enum:
+          - direct
+          - fanout
+          - topic
+          - headers
+          - x-consistent-hash
+          - x-modulus-hash
+        durable:
+          type: boolean
+        auto_delete:
+          type: boolean
+        internal:
+          type: boolean
+        arguments:
+          type: object
   securitySchemes:
     basicAuth:
       type: http
