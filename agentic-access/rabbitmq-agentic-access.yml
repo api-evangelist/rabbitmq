@@ -1,22 +1,26 @@
-generated: '2026-07-15'
+generated: '2026-09-23'
 method: generated
-source: openapi/rabbitmq-management.yml
+source: openapi/rabbitmq-bindings-api-openapi.yml, openapi/rabbitmq-channels-api-openapi.yml,
+  openapi/rabbitmq-connections-api-openapi.yml, openapi/rabbitmq-definitions-api-openapi.yml,
+  openapi/rabbitmq-exchanges-api-openapi.yml, openapi/rabbitmq-health-api-openapi.yml, openapi/rabbitmq-nodes-api-openapi.yml,
+  openapi/rabbitmq-overview-api-openapi.yml, openapi/rabbitmq-permissions-api-openapi.yml, openapi/rabbitmq-policies-api-openapi.yml,
+  openapi/rabbitmq-queues-api-openapi.yml, openapi/rabbitmq-users-api-openapi.yml, openapi/rabbitmq-virtual-hosts-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
   operations: 45
   by_action_class:
-    connected: 26
-    acting: 19
+    connected: 27
+    acting: 18
   by_consequence:
-    read: 26
-    write: 19
+    read: 27
+    write: 18
   human_in_the_loop_required: 0
 operations:
-- path: /overview
+- path: /bindings
   method: get
-  operationId: getOverview
+  operationId: listBindings
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -24,9 +28,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /cluster-name
+- path: /bindings/{vhost}/e/{exchange}/q/{queue}
   method: get
-  operationId: getClusterName
+  operationId: listBindingsBetween
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -34,9 +38,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /cluster-name
-  method: put
-  operationId: setClusterName
+- path: /bindings/{vhost}/e/{exchange}/q/{queue}
+  method: post
+  operationId: createBinding
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -50,19 +54,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /nodes
+- path: /channels
   method: get
-  operationId: listNodes
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /nodes/{name}
-  method: get
-  operationId: getNode
+  operationId: listChannels
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -106,9 +100,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /channels
+- path: /definitions
   method: get
-  operationId: listChannels
+  operationId: getDefinitions
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -116,45 +110,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /vhosts
-  method: get
-  operationId: listVhosts
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /vhosts/{vhost}
-  method: get
-  operationId: getVhost
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /vhosts/{vhost}
-  method: put
-  operationId: createVhost
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /vhosts/{vhost}
-  method: delete
-  operationId: deleteVhost
+- path: /definitions
+  method: post
+  operationId: postDefinitions
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -246,9 +204,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /queues
+- path: /health/checks/alarms
   method: get
-  operationId: listQueues
+  operationId: healthCheckAlarms
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -256,9 +214,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /queues/{vhost}
+- path: /health/checks/local-alarms
   method: get
-  operationId: listQueuesInVhost
+  operationId: healthCheckLocalAlarms
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -266,9 +224,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /queues/{vhost}/{queue}
+- path: /nodes
   method: get
-  operationId: getQueue
+  operationId: listNodes
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -276,145 +234,39 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /queues/{vhost}/{queue}
+- path: /nodes/{name}
+  method: get
+  operationId: getNode
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /overview
+  method: get
+  operationId: getOverview
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cluster-name
+  method: get
+  operationId: getClusterName
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cluster-name
   method: put
-  operationId: createQueue
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /queues/{vhost}/{queue}
-  method: delete
-  operationId: deleteQueue
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /queues/{vhost}/{queue}/get
-  method: post
-  operationId: getMessages
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /queues/{vhost}/{queue}/purge
-  method: delete
-  operationId: purgeQueue
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /bindings
-  method: get
-  operationId: listBindings
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /bindings/{vhost}/e/{exchange}/q/{queue}
-  method: get
-  operationId: listBindingsBetween
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /bindings/{vhost}/e/{exchange}/q/{queue}
-  method: post
-  operationId: createBinding
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /users
-  method: get
-  operationId: listUsers
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /users/{user}
-  method: get
-  operationId: getUser
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /users/{user}
-  method: put
-  operationId: createUser
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /users/{user}
-  method: delete
-  operationId: deleteUser
+  operationId: setClusterName
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -522,9 +374,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /health/checks/alarms
+- path: /queues
   method: get
-  operationId: healthCheckAlarms
+  operationId: listQueues
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -532,9 +384,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /health/checks/local-alarms
+- path: /queues/{vhost}
   method: get
-  operationId: healthCheckLocalAlarms
+  operationId: listQueuesInVhost
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -542,6 +394,126 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /queues/{vhost}/{queue}
+  method: get
+  operationId: getQueue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /queues/{vhost}/{queue}
+  method: put
+  operationId: createQueue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /queues/{vhost}/{queue}
+  method: delete
+  operationId: deleteQueue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /queues/{vhost}/{queue}/get
+  method: post
+  operationId: getMessages
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /queues/{vhost}/{queue}/purge
+  method: delete
+  operationId: purgeQueue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users
+  method: get
+  operationId: listUsers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users/{user}
+  method: get
+  operationId: getUser
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users/{user}
+  method: put
+  operationId: createUser
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users/{user}
+  method: delete
+  operationId: deleteUser
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /whoami
   method: get
   operationId: whoami
@@ -552,9 +524,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /definitions
+- path: /vhosts
   method: get
-  operationId: getDefinitions
+  operationId: listVhosts
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -562,9 +534,35 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /definitions
-  method: post
-  operationId: postDefinitions
+- path: /vhosts/{vhost}
+  method: get
+  operationId: getVhost
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /vhosts/{vhost}
+  method: put
+  operationId: createVhost
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /vhosts/{vhost}
+  method: delete
+  operationId: deleteVhost
   x-agentic-access:
     action-class: acting
     consequence: write
