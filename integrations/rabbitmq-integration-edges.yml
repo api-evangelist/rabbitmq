@@ -1,0 +1,24 @@
+generated: '2026-10-14'
+edges:
+- partner_name: Hightouch
+  partner: hightouch
+  partner_match: aggregator
+  marketplace: coverage
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://hightouch.com/docs/destinations/rabbitmq
+  coverage_role:
+  - destination
+  cdp_signals:
+    destination:
+      catalog_entries:
+      - rabbitmq
+      status: released
+  detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
+method: searched
+checked:
+- https://hightouch.com/docs/destinations/rabbitmq
+source: https://hightouch.com/docs/destinations/rabbitmq
