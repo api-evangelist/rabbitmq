@@ -46,77 +46,6 @@ paths:
           description: Definitions imported
 components:
   schemas:
-    Binding:
-      type: object
-      properties:
-        source:
-          type: string
-        vhost:
-          type: string
-        destination:
-          type: string
-        destination_type:
-          type: string
-          enum:
-          - queue
-          - exchange
-        routing_key:
-          type: string
-        arguments:
-          type: object
-        properties_key:
-          type: string
-    User:
-      type: object
-      properties:
-        name:
-          type: string
-        tags:
-          type: string
-        password_hash:
-          type: string
-        hashing_algorithm:
-          type: string
-    Permission:
-      type: object
-      properties:
-        user:
-          type: string
-        vhost:
-          type: string
-        configure:
-          type: string
-          description: Regex for configure permissions
-        write:
-          type: string
-          description: Regex for write permissions
-        read:
-          type: string
-          description: Regex for read permissions
-    Exchange:
-      type: object
-      properties:
-        name:
-          type: string
-        vhost:
-          type: string
-        type:
-          type: string
-          enum:
-          - direct
-          - fanout
-          - topic
-          - headers
-          - x-consistent-hash
-          - x-modulus-hash
-        durable:
-          type: boolean
-        auto_delete:
-          type: boolean
-        internal:
-          type: boolean
-        arguments:
-          type: object
     Definitions:
       type: object
       properties:
@@ -224,6 +153,77 @@ components:
           type: integer
         consumers:
           type: integer
+    Binding:
+      type: object
+      properties:
+        source:
+          type: string
+        vhost:
+          type: string
+        destination:
+          type: string
+        destination_type:
+          type: string
+          enum:
+          - queue
+          - exchange
+        routing_key:
+          type: string
+        arguments:
+          type: object
+        properties_key:
+          type: string
+    Exchange:
+      type: object
+      properties:
+        name:
+          type: string
+        vhost:
+          type: string
+        type:
+          type: string
+          enum:
+          - direct
+          - fanout
+          - topic
+          - headers
+          - x-consistent-hash
+          - x-modulus-hash
+        durable:
+          type: boolean
+        auto_delete:
+          type: boolean
+        internal:
+          type: boolean
+        arguments:
+          type: object
+    Permission:
+      type: object
+      properties:
+        user:
+          type: string
+        vhost:
+          type: string
+        configure:
+          type: string
+          description: Regex for configure permissions
+        write:
+          type: string
+          description: Regex for write permissions
+        read:
+          type: string
+          description: Regex for read permissions
+    User:
+      type: object
+      properties:
+        name:
+          type: string
+        tags:
+          type: string
+        password_hash:
+          type: string
+        hashing_algorithm:
+          type: string
   securitySchemes:
     basicAuth:
       type: http
