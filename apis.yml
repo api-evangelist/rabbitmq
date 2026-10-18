@@ -64,6 +64,11 @@ apis:
   tags:
   - AMQP
   - Messaging
+  - Pub/Sub
+  - Queues
+  tags_raw:
+  - AMQP
+  - Messaging
   - Pub-Sub
   - Queues
   properties:
