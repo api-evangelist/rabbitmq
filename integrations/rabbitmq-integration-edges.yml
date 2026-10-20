@@ -51,10 +51,77 @@ edges:
     detected: '2026-10-19'
   detected_by: sweep-cloud-native.py
   first_seen: '2026-10-15'
+- partner_name: Homebrew
+  partner: homebrew
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official CLI (Homebrew)
+  evidence: https://formulae.brew.sh/formula/rabbitmqadmin
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: Homebrew (public package index)
+    spec_file: null
+    packages:
+    - name: rabbitmqadmin
+      kind: formula
+      version: 2.35.0
+      released: null
+      lapsed: false
+      page: https://formulae.brew.sh/formula/rabbitmqadmin
+      cli: 'formula desc: Command-line tool for RabbitMQ that uses the HTTP API'
+      repo_leg: domain:rabbitmq.com
+      publisher_leg: artifact-github-org:rabbitmq
+      matched_by: domain
+    current: true
+    signal_note: 'the provider''s own command-line tool on a package manager: distribution, not an integration;
+      lapsed = no release in 24 months or deprecated / disabled by the manager'
+    detected_by: sweep-official-clis.py
+    detected: '2026-10-20'
+  detected_by: sweep-official-clis.py
+  first_seen: '2026-10-20'
+- partner_name: Scoop
+  partner: null
+  partner_match: null
+  type: register
+  direction: provider-built
+  category: official CLI (Scoop)
+  evidence: https://github.com/ScoopInstaller/Extras/blob/master/bucket/rabbitmqadmin-ng.json
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: Scoop (public package index)
+    spec_file: null
+    packages:
+    - name: rabbitmqadmin-ng
+      kind: extras
+      version: 2.35.0
+      released: null
+      lapsed: false
+      page: https://github.com/ScoopInstaller/Extras/blob/master/bucket/rabbitmqadmin-ng.json
+      cli: 'scoop description: A command line tool for RabbitMQ that uses the HTTP API'
+      repo_leg: github-org:rabbitmq
+      publisher_leg: artifact-github-org:rabbitmq
+      matched_by: github-org
+    current: true
+    signal_note: 'the provider''s own command-line tool on a package manager: distribution, not an integration;
+      lapsed = no release in 24 months or deprecated / disabled by the manager'
+    detected_by: sweep-official-clis.py
+    detected: '2026-10-20'
+  detected_by: sweep-official-clis.py
+  first_seen: '2026-10-20'
 method: searched
 checked:
+- https://cdn.winget.microsoft.com/cache
 - https://focus.finops.org/data-generators/
+- https://formulae.brew.sh/api/cask.json
+- https://formulae.brew.sh/api/formula.json
+- https://github.com/ScoopInstaller/Extras
+- https://github.com/ScoopInstaller/Main
 - https://github.com/cncf/k8s-conformance
 - https://github.com/cncf/landscape
 - https://hightouch.com/docs/destinations/rabbitmq
+- https://pypi.org/pypi
+- https://registry.npmjs.org
 source: https://hightouch.com/docs/destinations/rabbitmq
