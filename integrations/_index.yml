@@ -49,3 +49,64 @@
     detected: '2026-10-19'
   status: not-a-workflow
   arazzo: null
+- slug: rabbitmq-homebrew
+  label: Homebrew
+  partner: homebrew
+  partner_name: Homebrew
+  category: official CLI (Homebrew)
+  type: register
+  channel: package-registry
+  evidence: https://formulae.brew.sh/formula/rabbitmqadmin
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: Homebrew (public package index)
+    spec_file: null
+    packages:
+    - name: rabbitmqadmin
+      kind: formula
+      version: 2.35.0
+      released: null
+      lapsed: false
+      page: https://formulae.brew.sh/formula/rabbitmqadmin
+      cli: 'formula desc: Command-line tool for RabbitMQ that uses the HTTP API'
+      repo_leg: domain:rabbitmq.com
+      publisher_leg: artifact-github-org:rabbitmq
+      matched_by: domain
+    current: true
+    signal_note: 'the provider''s own command-line tool on a package manager: distribution, not an integration;
+      lapsed = no release in 24 months or deprecated / disabled by the manager'
+    detected_by: sweep-official-clis.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
+- slug: rabbitmq-scoop
+  label: Scoop
+  partner_name: Scoop
+  category: official CLI (Scoop)
+  type: register
+  channel: package-registry
+  evidence: https://github.com/ScoopInstaller/Extras/blob/master/bucket/rabbitmqadmin-ng.json
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: Scoop (public package index)
+    spec_file: null
+    packages:
+    - name: rabbitmqadmin-ng
+      kind: extras
+      version: 2.35.0
+      released: null
+      lapsed: false
+      page: https://github.com/ScoopInstaller/Extras/blob/master/bucket/rabbitmqadmin-ng.json
+      cli: 'scoop description: A command line tool for RabbitMQ that uses the HTTP API'
+      repo_leg: github-org:rabbitmq
+      publisher_leg: artifact-github-org:rabbitmq
+      matched_by: github-org
+    current: true
+    signal_note: 'the provider''s own command-line tool on a package manager: distribution, not an integration;
+      lapsed = no release in 24 months or deprecated / disabled by the manager'
+    detected_by: sweep-official-clis.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
