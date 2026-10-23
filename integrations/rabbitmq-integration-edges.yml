@@ -111,6 +111,25 @@ edges:
     detected: '2026-10-20'
   detected_by: sweep-official-clis.py
   first_seen: '2026-10-20'
+- partner_name: Chef Software (chef-supermarket)
+  partner: chef-software
+  partner_match: mirror
+  mirror_match: register
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: chef-supermarket
+  evidence: https://supermarket.chef.io/cookbooks/rabbitmq
+  mirror_of: chef-software/integrations/chef-software-integration-edges.yml
+  apps:
+  - rabbitmq
+  listing_count: 1
+  detected: '2026-10-22'
+  detected_by: mirror-platform-listings.py
+  category: configuration-management content listing (Chef cookbook)
+  badges:
+  - Verified publisher (GitHub domain-verified organization)
 method: searched
 checked:
 - https://focus.finops.org/data-generators/
@@ -124,4 +143,5 @@ checked:
 - https://github.com/ScoopInstaller/Main
 - https://pypi.org/pypi
 - https://registry.npmjs.org
+- chef-software/integrations/chef-software-integration-edges.yml
 source: https://hightouch.com/docs/destinations/rabbitmq
