@@ -1,4 +1,4 @@
-# RabbitMQ (rabbitmq)
+# RabbitMQ
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,81 +66,167 @@
 
 RabbitMQ is a widely deployed open source message broker. It supports multiple messaging protocols and can be deployed in distributed and federated configurations to meet high-scale, high-availability requirements.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/rabbitmq/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/rabbitmq/refs/heads/main/apis.yml)
+**Areas:** Queues · RabbitMQ · AMQP · Distributed Systems · Event Streaming · Message Broker · Messaging · Real-Time
 
-## Scope
+## RabbitMQ on APIs.io
 
-- **Type:** Index
+Everything profiled for RabbitMQ is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/rabbitmq/](https://apis.io/providers/rabbitmq/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (14)
 
-- AMQP
-- Distributed Systems
-- Event Streaming
-- Message Broker
-- Messaging
-- Queue
+- [RabbitMQ AMQP Messaging API](https://apis.io/apis/rabbitmq/rabbitmq-amqp-messaging-api/) — AMQP 0-9-1 messaging protocol for producing and consuming messages via exchanges, queues, and bindings with support for multiple exchange types, message…
+- [RabbitMQ Bindings API](https://apis.io/apis/rabbitmq/rabbitmq-bindings-api/) — The Bindings API from RabbitMQ — 2 operation(s) for bindings.
+- [RabbitMQ Channels API](https://apis.io/apis/rabbitmq/rabbitmq-channels-api/) — The Channels API from RabbitMQ — 1 operation(s) for channels.
+- [RabbitMQ Connections API](https://apis.io/apis/rabbitmq/rabbitmq-connections-api/) — The Connections API from RabbitMQ — 2 operation(s) for connections.
+- [RabbitMQ Definitions API](https://apis.io/apis/rabbitmq/rabbitmq-definitions-api/) — The Definitions API from RabbitMQ — 1 operation(s) for definitions.
+- [RabbitMQ Exchanges API](https://apis.io/apis/rabbitmq/rabbitmq-exchanges-api/) — The Exchanges API from RabbitMQ — 4 operation(s) for exchanges.
+- [RabbitMQ Health API](https://apis.io/apis/rabbitmq/rabbitmq-health-api/) — The Health API from RabbitMQ — 2 operation(s) for health.
+- [RabbitMQ Nodes API](https://apis.io/apis/rabbitmq/rabbitmq-nodes-api/) — The Nodes API from RabbitMQ — 2 operation(s) for nodes.
+- [RabbitMQ Overview API](https://apis.io/apis/rabbitmq/rabbitmq-overview-api/) — The Overview API from RabbitMQ — 2 operation(s) for overview.
+- [RabbitMQ Permissions API](https://apis.io/apis/rabbitmq/rabbitmq-permissions-api/) — The Permissions API from RabbitMQ — 1 operation(s) for permissions.
+- [RabbitMQ Policies API](https://apis.io/apis/rabbitmq/rabbitmq-policies-api/) — The Policies API from RabbitMQ — 2 operation(s) for policies.
+- [RabbitMQ Queues API](https://apis.io/apis/rabbitmq/rabbitmq-queues-api/) — The Queues API from RabbitMQ — 5 operation(s) for queues.
+- [RabbitMQ Users API](https://apis.io/apis/rabbitmq/rabbitmq-users-api/) — The Users API from RabbitMQ — 3 operation(s) for users.
+- [RabbitMQ Virtual Hosts API](https://apis.io/apis/rabbitmq/rabbitmq-virtual-hosts-api/) — The Virtual Hosts API from RabbitMQ — 2 operation(s) for virtual hosts.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-01-01
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### AsyncAPI (1)
 
-### RabbitMQ Management HTTP API
+Event-driven and webhook contracts.
 
-HTTP-based API for management and monitoring of RabbitMQ nodes and clusters. Allows you to manage exchanges, queues, bindings, users, virtual hosts, permissions, and more.
+- [RabbitMQ AMQP Messaging API](https://apis.io/asyncapis/rabbitmq/rabbitmq-messaging/)
 
-- **Human URL:** [https://www.rabbitmq.com/management.html](https://www.rabbitmq.com/management.html)
-- **Base URL:** `http://localhost:15672/api`
+#### Event channels (2)
 
-#### Tags
+Individual events and webhooks the provider emits.
 
-- HTTP
-- Management
-- Monitoring
-- REST API
+- [{exchange}/{routing_key}](https://apis.io/channels/rabbitmq/exchange-routing-key/)
+- [{queue}](https://apis.io/channels/rabbitmq/queue/)
 
-#### Properties
+#### Agentic access (1)
 
-- [Documentation](https://rawcdn.githack.com/rabbitmq/rabbitmq-server/v3.12.0/deps/rabbitmq_management/priv/www/api/index.html)
-- [OpenAPI](openapi/rabbitmq-management.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/rabbitmq-management.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/rabbitmq-management.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Authentication](https://www.rabbitmq.com/management.html#permissions)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-### RabbitMQ AMQP Messaging API
+- [Rabbitmq Agentic Access](https://apis.io/agentic-access/rabbitmq/rabbitmq-agentic-access/)
 
-AMQP 0-9-1 messaging protocol for producing and consuming messages via exchanges, queues, and bindings with support for multiple exchange types, message acknowledgment, and consumer groups.
+#### JSON Schema (1)
 
-- **Human URL:** [https://www.rabbitmq.com/tutorials/amqp-concepts.html](https://www.rabbitmq.com/tutorials/amqp-concepts.html)
+The data models the API reads and writes.
 
-#### Tags
+- [RabbitMQ Message](https://apis.io/schemas/rabbitmq/rabbitmq-message/)
 
-- AMQP
-- Messaging
-- Pub-Sub
-- Queues
+#### Collections (14)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://www.rabbitmq.com/tutorials/amqp-concepts.html)
-- [AsyncAPI](asyncapi/rabbitmq-messaging.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-- [JSON Schema](json-schema/rabbitmq-message.json) — [JSON Schema](https://json-schema.org/specification)
-- [Postman Collection](collections/rabbitmq-management.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/rabbitmq-management.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [RabbitMQ Management HTTP Bindings API](https://apis.io/collections/rabbitmq/open-rabbitmq-bindings-api/)
+- [RabbitMQ Management HTTP Bindings Channels API](https://apis.io/collections/rabbitmq/open-rabbitmq-channels-api/)
+- [RabbitMQ Management HTTP Bindings Connections API](https://apis.io/collections/rabbitmq/open-rabbitmq-connections-api/)
+- [RabbitMQ Management HTTP Bindings Definitions API](https://apis.io/collections/rabbitmq/open-rabbitmq-definitions-api/)
+- [RabbitMQ Management HTTP Bindings Exchanges API](https://apis.io/collections/rabbitmq/open-rabbitmq-exchanges-api/)
+- [RabbitMQ Management HTTP Bindings Health API](https://apis.io/collections/rabbitmq/open-rabbitmq-health-api/)
+- [RabbitMQ Management HTTP API](https://apis.io/collections/rabbitmq/open-rabbitmq-management/)
+- [RabbitMQ Management HTTP Bindings Nodes API](https://apis.io/collections/rabbitmq/open-rabbitmq-nodes-api/)
+- [RabbitMQ Management HTTP Bindings Overview API](https://apis.io/collections/rabbitmq/open-rabbitmq-overview-api/)
+- [RabbitMQ Management HTTP Bindings Permissions API](https://apis.io/collections/rabbitmq/open-rabbitmq-permissions-api/)
+- [RabbitMQ Management HTTP Bindings Policies API](https://apis.io/collections/rabbitmq/open-rabbitmq-policies-api/)
+- [RabbitMQ Management HTTP Bindings Queues API](https://apis.io/collections/rabbitmq/open-rabbitmq-queues-api/)
+- [RabbitMQ Management HTTP Bindings Users API](https://apis.io/collections/rabbitmq/open-rabbitmq-users-api/)
+- [RabbitMQ Management HTTP Bindings Virtual Hosts API](https://apis.io/collections/rabbitmq/open-rabbitmq-virtual-hosts-api/)
 
-## Common Properties
+#### Governance rules (2)
 
-- [LinkedIn](https://www.linkedin.com/company/rabbitmq)
-- [GitHub Organization](https://github.com/rabbitmq)
-- [Community](https://www.rabbitmq.com/community.html)
+Spectral rulesets for the provider's contracts.
+
+- [RabbitMQ — asyncapi rules](https://apis.io/rules/rabbitmq/rabbitmq-asyncapi-spectral-rules/)
+- [RabbitMQ — jsonschema rules](https://apis.io/rules/rabbitmq/rabbitmq-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Rabbitmq Authentication](https://apis.io/security/rabbitmq/rabbitmq-authentication/)
+- [Rabbitmq Domain Security](https://apis.io/security/rabbitmq/rabbitmq-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Rabbitmq Plans Pricing](https://apis.io/plans/rabbitmq/rabbitmq-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Rabbitmq Rate Limits](https://apis.io/rate-limits/rabbitmq/rabbitmq-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Rabbitmq Finops](https://apis.io/finops/rabbitmq/rabbitmq-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.rabbitmq.com/)
 - [Support](https://www.rabbitmq.com/contact.html)
 - [Blog](https://www.rabbitmq.com/blog/)
-- [Website](https://www.rabbitmq.com/)
+- [GitHub](https://github.com/rabbitmq)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 29.8** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 51.2 |
+| Contract governance | 13.6 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 28.6 |
+| Access clarity | 7.9 |
+
+**Agent readiness 19.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/rabbitmq/](https://apis.io/providers/rabbitmq/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for RabbitMQ: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/rabbitmq/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
